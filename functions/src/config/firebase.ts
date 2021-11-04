@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin"
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const serviceAccount = require("../Firebase/serviceAccountKey.json")
+const serviceAccount = require("../../serviceAccountKey.json")
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -17,4 +17,4 @@ const increment = admin.firestore.FieldValue.increment(1)
 const decrement = admin.firestore.FieldValue.increment(-1)
 
 
-export {admin, bucket, db, messaging, timestamp, docId, increment, decrement}
+export { admin, bucket, db, messaging, timestamp, docId, increment, decrement }

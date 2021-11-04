@@ -31,6 +31,8 @@
     "linebreak-style": ["error", "unix"],
     "import/no-unresolved": 0,
     "comma-spacing": ["error", { "before": false, "after": true }],
-    "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 1}]
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 1}],
+    "max-len": ["error", { "code": 120 }],
+    "object-curly-spacing": ["error", "always"]
   }
 }
