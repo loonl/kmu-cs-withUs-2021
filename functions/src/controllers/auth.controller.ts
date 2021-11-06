@@ -4,7 +4,7 @@ import { admin } from "../config/firebase"
 
 /**
  * Create a new user
- * @route GET /test
+ * @route GET /user/create
  */
 export const createUser = (req: Request, res: Response): void => {
   admin.auth().createUser({
@@ -17,9 +17,8 @@ export const createUser = (req: Request, res: Response): void => {
     disabled: false,
   })
     .then((userRecord) => {
-      // See the UserRecord reference doc for the contents of userRecord.
       console.log("Successfully created new user:", userRecord.uid)
-      res.status(200).send(`Successfully created new user: ${userRecord.uid}`)
+      res.status(200).send(userRecord.uid)
     })
     .catch((error) => {
       console.log("Error creating new user:", error)
