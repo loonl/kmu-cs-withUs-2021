@@ -1,21 +1,20 @@
 import * as functions from "firebase-functions"
 import * as express from "express"
 import * as cors from "cors"
-import { router } from "./routes/auth.route"
+import { router } from "./routes"
+import { userVerifyToken } from "./utils/tokenHandler"
 
 
 const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
+app.use(userVerifyToken)
+app.use("/", router)
 
 app.on("error", (err) => {
   console.log(err)
 })
-
-// ----- router test -----
-app.use("/test", router)
-// -----------------------
 
 app.get("/", (req: express.Request, res: express.Response) => {
   res.status(200).send("GET request test")
