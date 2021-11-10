@@ -1,7 +1,10 @@
 import * as express from "express"
-import { createUser } from "../../controllers/auth.controller"
+import { getUser, createUser, modifyUser, deleteUser } from "../../controllers/auth.controller"
 
 // eslint-disable-next-line new-cap
 export const authRouter = express.Router()
 
-authRouter.use("/create", createUser)
+authRouter.get("/get", getUser)
+authRouter.post("/create", createUser)
+authRouter.post("/modify", modifyUser)
+authRouter.post("/delete", deleteUser)

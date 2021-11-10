@@ -1,5 +1,18 @@
 import { Request, Response } from "express"
-import { admin } from "../config/firebase"
+import { admin, db } from "../config/firebase"
+
+
+/**
+ * Get user data
+ * @route GET /user/get
+ */
+export const getUser = async (req: Request, res: Response): Promise<any> => {
+  try {
+    // TODO:
+  } catch (error) {
+    // TODO:
+  }
+}
 
 
 /**
@@ -26,6 +39,32 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
       res.status(200).send({ "success": false })
     }
   } catch (error) {
-    console.log("Error creating new user:", error)
+    console.log("Error on creating a new user:", error)
+  }
+}
+
+
+/**
+ * Modify user info
+ * @route POST /user/modify
+ */
+export const modifyUser = async (req: Request, res: Response): Promise<void> => {
+  try {
+    // TODO:
+  } catch (error) {
+    // TODO:
+  }
+}
+
+
+/**
+ * Delete user account & data
+ * @route POST /user/delete
+ */
+export const deleteUser = async (req: Request, res: Response): Promise<void> => {
+  try {
+    // TODO:
+  } catch (error) {
+    // TODO:
   }
 }
