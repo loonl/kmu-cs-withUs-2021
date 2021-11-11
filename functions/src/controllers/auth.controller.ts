@@ -8,9 +8,14 @@ import { admin, db } from "../config/firebase"
  */
 export const getUser = async (req: Request, res: Response): Promise<any> => {
   try {
-    // TODO:
+    const userData = (await db.collection("User").doc(res.locals.uid).get()).data()
+    if (userData) {
+      return JSON.parse(JSON.stringify(userData))
+    } else {
+      res.status(200).send({ "success": false })
+    }
   } catch (error) {
-    // TODO:
+    console.log("Error on getting a new user:", error)
   }
 }
 
