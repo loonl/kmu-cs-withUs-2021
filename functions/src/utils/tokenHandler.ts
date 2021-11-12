@@ -14,6 +14,9 @@ export const userVerifyToken = async (req: Request, res: Response, next: NextFun
       if (currentDate >= exp) {
         throw Error("Token has been expired")
       }
+      res.locals.uid = decodedIdToken.uid
+      res.locals.email = decodedIdToken.email
+      console.log("User uid: ", res.locals.uid)
     } else {
       // Anonymous user
       next()
