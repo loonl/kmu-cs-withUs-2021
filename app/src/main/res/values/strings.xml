@@ -10,4 +10,14 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="login_tv">로그인</string>
+    <string name="appname">With Us!</string>
+    <string name="password">Password</string>
+    <string name="id">ID</string>
+    <string name="or">or</string>
+    <string name="naverid">네이버ID 로그인</string>
+    <string name="kakaoid">카카오계정 로그인</string>
+    <string name="facebookid">페이스북 로그인</string>
+    <string name="register_text">With Us가 처음이신가요?</string>
+    <string name="register">회원가입</string>
 </resources>
