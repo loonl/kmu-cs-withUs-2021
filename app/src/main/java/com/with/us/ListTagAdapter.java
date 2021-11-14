@@ -18,7 +18,7 @@ public class ListTagAdapter extends RecyclerView.Adapter<ListTagAdapter.ViewHold
         ViewHolder(View itemview){
             super(itemview);
 
-            textView1=itemview.findViewById(R.id.text);
+            textView1=itemview.findViewById(R.id.tag_name);
         }
     }
     ListTagAdapter(ArrayList<String> list){

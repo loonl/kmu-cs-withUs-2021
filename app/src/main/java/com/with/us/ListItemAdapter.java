@@ -35,10 +35,10 @@ public class ListItemAdapter extends BaseAdapter {
             LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView=inflater.inflate(R.layout.activity_list_item,parent,false);
         }
-        TextView nameText=convertView.findViewById(R.id.text1);
-        TextView descriptionText=convertView.findViewById(R.id.text2);
-        TextView scoreText=convertView.findViewById(R.id.textView4);
-        TextView numberText=convertView.findViewById(R.id.textView3);
+        TextView nameText=convertView.findViewById(R.id.list_title);
+        TextView descriptionText=convertView.findViewById(R.id.list_description);
+        TextView scoreText=convertView.findViewById(R.id.list_score);
+        TextView numberText=convertView.findViewById(R.id.list_number);
 
         nameText.setText(listItem.getName());
         descriptionText.setText(listItem.getDescription());
