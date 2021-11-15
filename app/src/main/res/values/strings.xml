@@ -26,4 +26,7 @@
     <string name="woman">여성</string>
     <string name="man">남성</string>
     <string name="birth">생년월일</string>
+    <string name="region">지역</string>
+    <string name="interest">관심사</string>
+    <string name="birth_ex">ex) 1999년생 01월 01일 생일 경우 19990101</string>
 </resources>
