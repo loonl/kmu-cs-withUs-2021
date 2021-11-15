@@ -18,7 +18,7 @@
             android:id="@+id/activity_register_et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/name"
+            android:hint="@string/register_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:minHeight="48dp"
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="@string/birth"
+            android:hint="@string/register_birth"
             android:importantForAutofill="no"
             android:inputType="date"
             android:minHeight="48dp"
@@ -39,7 +39,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/birth_ex" />
+            android:text="@string/register_birth_ex" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -51,13 +51,13 @@
                 android:id="@+id/activity_register_rb_woman"
                 android:layout_width="155dp"
                 android:layout_height="wrap_content"
-                android:text="@string/woman" />
+                android:text="@string/register_woman" />
 
             <RadioButton
                 android:id="@+id/activity_register_rb_man"
                 android:layout_width="155dp"
                 android:layout_height="wrap_content"
-                android:text="@string/man" />
+                android:text="@string/register_man" />
 
         </RadioGroup>
 
@@ -65,7 +65,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/region" />
+            android:text="@string/register_region" />
 
         <Spinner
             android:id="@+id/activity_register_spn_region"
@@ -80,7 +80,7 @@
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/interest" />
+            android:text="@string/register_interest" />
 
         <Spinner
             android:id="@+id/activity_register_spn_interest"
@@ -95,7 +95,8 @@
             android:id="@+id/activity_register_fragment_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/register" />
+            android:backgroundTint="@color/indigo"
+            android:text="@string/register_done" />
 
     </LinearLayout>
 

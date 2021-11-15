@@ -15,7 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.with.us.R;
@@ -27,8 +26,8 @@ public class HomeFragment extends Fragment {
     SearchView sv_main;
     ListView lv_hot;
     ListView lv_new;
-    ArrayList<String> hotList = new ArrayList<>(Arrays.asList("Hot1","Hot2","Hot3"));
-    ArrayList<String> newList = new ArrayList<>(Arrays.asList("New1","New2","New3"));
+    ArrayList<String> hotList = new ArrayList<>(Arrays.asList("Hot1", "Hot2", "Hot3"));
+    ArrayList<String> newList = new ArrayList<>(Arrays.asList("New1", "New2", "New3"));
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
