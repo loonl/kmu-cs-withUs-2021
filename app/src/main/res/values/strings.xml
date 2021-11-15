@@ -2,6 +2,9 @@
     <!-- ************************* App ************************* -->
     <string name="app_name"><b>With Us <i>!</i></b></string>
 
+    <!-- ************************* App Bar ************************* -->
+    <string name="appbar_title">Home</string>
+
 
     <!-- ************************* Navigation ************************* -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
