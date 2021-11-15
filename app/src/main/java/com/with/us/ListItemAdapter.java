@@ -10,8 +10,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ListItemAdapter extends BaseAdapter {
-    ArrayList<com.with.us.ListItem> items= new ArrayList<>();
+    ArrayList<ListItem> items = new ArrayList<>();
     Context context;
+
     @Override
     public int getCount() {
         return items.size();
@@ -29,16 +30,18 @@ public class ListItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        context=parent.getContext();
-        com.with.us.ListItem listItem=items.get(position);
-        if(convertView==null){
-            LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView=inflater.inflate(R.layout.activity_list_item,parent,false);
+        context = parent.getContext();
+        ListItem listItem = items.get(position);
+
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.activity_list_item, parent, false);
         }
-        TextView nameText=convertView.findViewById(R.id.list_title);
-        TextView descriptionText=convertView.findViewById(R.id.list_description);
-        TextView scoreText=convertView.findViewById(R.id.list_score);
-        TextView numberText=convertView.findViewById(R.id.list_number);
+
+        TextView nameText = convertView.findViewById(R.id.list_title);
+        TextView descriptionText = convertView.findViewById(R.id.list_description);
+        TextView scoreText = convertView.findViewById(R.id.list_score);
+        TextView numberText = convertView.findViewById(R.id.list_number);
 
         nameText.setText(listItem.getName());
         descriptionText.setText(listItem.getDescription());
@@ -47,7 +50,8 @@ public class ListItemAdapter extends BaseAdapter {
 
         return convertView;
     }
-    public void addItem(com.with.us.ListItem item){
+
+    public void addItem(ListItem item) {
         items.add(item);
     }
 }

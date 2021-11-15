@@ -10,9 +10,11 @@ export const getUser = async (req: Request, res: Response): Promise<any> => {
   try {
     const userData = (await db.collection("User").doc(res.locals.uid).get()).data()
     if (userData) {
-      return JSON.parse(JSON.stringify(userData))
+      console.log(userData)
+      res.json(userData)
     } else {
-      res.status(200).send({ "success": false })
+      console.log("Failed to get user data")
+      res.send({ "success": false })
     }
   } catch (error) {
     console.log("Error on getting a new user:", error)
@@ -30,7 +32,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
     console.log(email, password)
     if (!email && !password) {
       console.log("No payload from user")
-      res.status(200).send({ "success": false }) // FIXME: throw empty payload error
+      res.send({ "success": false }) // FIXME: throw empty payload error
     }
     const userRecord = await admin.auth().createUser({
       email: email,
@@ -38,10 +40,10 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
     })
     if (userRecord.uid) {
       console.log(`Successfully created user ${userRecord.uid}`)
-      res.status(200).send({ "success": true })
+      res.send({ "success": true })
     } else {
       console.log("Failed to create user")
-      res.status(200).send({ "success": false })
+      res.send({ "success": false })
     }
   } catch (error) {
     console.log("Error on creating a new user:", error)

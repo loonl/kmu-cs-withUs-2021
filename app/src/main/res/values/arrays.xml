@@ -19,4 +19,11 @@
         <item>경상남도</item>
         <item>제주특별자치도</item>
     </string-array>
+
+    <string-array name="interest">
+        <item>운동</item>
+        <item>도예</item>
+        <item>음악</item>
+        <item>기타등등 뭐 추가할거 밑에 더 추가할것</item>
+    </string-array>
 </resources>

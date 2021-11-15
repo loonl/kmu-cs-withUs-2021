@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="250dp"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+
+        <EditText
+            android:id="@+id/activity_register_et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/register_name"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/activity_register_et_birth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/register_birth"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_birth_ex" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/activity_register_rb_woman"
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:text="@string/register_woman" />
+
+            <RadioButton
+                android:id="@+id/activity_register_rb_man"
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:text="@string/register_man" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_region" />
+
+        <Spinner
+            android:id="@+id/activity_register_spn_region"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/region"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_interest" />
+
+        <Spinner
+            android:id="@+id/activity_register_spn_interest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/interest"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/activity_register_fragment_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/indigo"
+            android:text="@string/register_done" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

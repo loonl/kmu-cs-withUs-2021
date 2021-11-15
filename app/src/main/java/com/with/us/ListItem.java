@@ -6,22 +6,26 @@ public class ListItem {
     private String score;
     private String number;
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
-    public String getScore(){
+
+    public String getScore() {
         return score;
     }
-    public String getNumber(){
+
+    public String getNumber() {
         return number;
     }
-    ListItem(String name,String description,String score, String number){
-        this.name=name;
-        this.description =description;
-        this.score=score;
-        this.number=number;
+
+    ListItem(String name, String description, String score, String number) {
+        this.name = name;
+        this.description = description;
+        this.score = score;
+        this.number = number;
     }
 }
