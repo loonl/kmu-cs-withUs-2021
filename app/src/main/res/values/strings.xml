@@ -15,9 +15,10 @@
     <string name="password">Password</string>
     <string name="id">ID</string>
     <string name="or">or</string>
-    <string name="naverid">네이버ID 로그인</string>
-    <string name="kakaoid">카카오계정 로그인</string>
-    <string name="facebookid">페이스북 로그인</string>
+    <string name="phoneid">전화번호 로그인</string>
+    <string name="googleid">구글 아이디 로그인</string>
+    <string name="facebookid">페이스북 아이디 로그인</string>
+    <string name="twitterid">트위터 아이디 로그인</string>
     <string name="register_text">With Us가 처음이신가요?</string>
     <string name="register">회원가입</string>
     <string name="register_continue">회원가입 계속하기</string>

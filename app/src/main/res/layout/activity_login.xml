@@ -10,7 +10,7 @@
         android:id="@+id/activity_login_tv_appname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="80dp"
         android:text="@string/appname"
         android:textColor="@color/purple_500"
         android:textSize="40sp"
@@ -22,7 +22,7 @@
         android:id="@+id/activity_login_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="140dp"
         android:text="@string/login_tv"
         android:textColor="#6C6B6B"
         android:textSize="24sp"
@@ -35,7 +35,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="180dp"
         android:orientation="vertical"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
@@ -81,32 +81,42 @@
             tools:ignore="TextContrastCheck" />
 
         <Button
-            android:id="@+id/activity_login_btn_fb"
+            android:id="@+id/activity_login_btn_p"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/purple_500"
+            android:drawableLeft="@drawable/ic_baseline_call_24"
+            android:drawableTint="@color/white"
+            android:text="@string/phoneid"
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck" />
+
+        <Button
+            android:id="@+id/activity_login_btn_fb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:backgroundTint="#3F51B5"
             android:drawableLeft="@drawable/facebooklogo"
             android:text="@string/facebookid" />
 
         <Button
-            android:id="@+id/activity_login_btn_n"
+            android:id="@+id/activity_login_btn_t"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#3FCA44"
-            android:drawableLeft="@drawable/naverlogo"
-            android:text="@string/naverid"
-            android:textColor="#424242"
-            tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck" />
+            android:backgroundTint="#2196F3"
+            android:drawableLeft="@drawable/twitterlogo"
+            android:text="@string/twitterid"
+            android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/activity_login_btn_k"
+            android:id="@+id/activity_login_btn_g"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFEB3B"
-            android:drawableLeft="@drawable/kakaotalklogo"
-            android:text="@string/kakaoid"
-            android:textColor="#BF360C" />
+            android:backgroundTint="#DFE4DF"
+            android:drawableLeft="@drawable/googlelogo"
+            android:text="@string/googleid"
+            android:textColor="#3E2121" />
 
         <LinearLayout
             android:layout_width="match_parent"
