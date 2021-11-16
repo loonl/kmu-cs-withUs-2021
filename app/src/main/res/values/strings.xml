@@ -51,4 +51,24 @@
     <string name="home_hot">이번 주 Hot한 모임</string>
     <string name="home_new">이번 주 신규 모임</string>
 
+
+    <!-- ************************* My Page ************************* -->
+    <string name="mypage_text">마이페이지</string>
+    <string name="mypage_back">뒤로가기</string>
+    <string name="mypage_image">사진</string>
+    <string name="mypage_name">익명</string>
+    <string name="mypage_nim">님</string>
+    <string name="mypage_birth">생년월일</string>
+    <string name="mypage_region">지역</string>
+    <string name="mypage_score">활동점수 :</string>
+    <string name="mypage_jum">점</string>
+    <string name="mypage_score_num">0</string>
+    <string name="mypage_change"> 회원정보 수정</string>
+    <string name="mypage_quit">회원탈퇴</string>
+    <string name="mypage_logout">로그아웃</string>
+    <string name="mypage_post_notice">게시글 알림 설정</string>
+    <string name="mypage_chat_notice">채팅 알림 설정</string>
+    <string name="mypage_notice">알림설정</string>
+
+
 </resources>
