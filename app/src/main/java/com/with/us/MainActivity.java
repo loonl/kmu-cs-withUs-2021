@@ -3,11 +3,9 @@ package com.with.us;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBar;
@@ -19,10 +17,13 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.with.us.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseAuth mAuth;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private ActionBar actionBar;
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mAuth = FirebaseAuth.getInstance();
+        invalidateOptionsMenu();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -44,11 +48,25 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home)
                 .setOpenableLayout(drawer).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.action_login);
+        String logInText = getApplicationContext().getResources().getString(R.string.login_text);
+        String logOutText = getApplicationContext().getResources().getString(R.string.logout_text);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            item.setTitle(logOutText);
+        } else {
+            item.setTitle(logInText);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -59,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logIn(MenuItem item) {
+        String logOutText = getApplicationContext().getResources().getString(R.string.logout_text);
+
+        if (item.getTitle().equals(logOutText)) {
+            mAuth.signOut();
+        }
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }

@@ -70,6 +70,16 @@
             android:minHeight="48dp"
             android:textSize="14sp" />
 
+        <Button
+            android:id="@+id/activity_login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/indigo"
+            android:drawableTint="@color/snow"
+            android:text="@string/login_button"
+            android:textColor="@color/white" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"

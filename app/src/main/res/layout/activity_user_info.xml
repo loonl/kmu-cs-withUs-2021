@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/aliceblue">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/mypage_text"
+                app:srcCompat="@drawable/ic_baseline_person_24"
+                app:tint="@color/azure" />
+
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/mypage_text"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/activity_user_info_btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/mypage_back"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+
+
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/nestedScrollView"
+        app:layout_anchorGravity="center"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+
+            <ImageView
+                android:id="@+id/activity_user_info_iv"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="40dp"
+                android:contentDescription="@string/mypage_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                app:srcCompat="@mipmap/ic_launcher_round"
+                app:strokeColor="@color/white"
+                app:strokeWidth="0dp" />
+
+            <TextView
+                android:id="@+id/activity_user_info_tv_chage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:text="@string/mypage_change"
+                android:textColor="#546E7A"
+                android:textSize="12sp"
+                app:drawableLeftCompat="@drawable/ic_baseline_settings_24"
+                app:drawableTint="@color/darkgray"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/activity_user_info_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="45dp"
+                android:text="@string/mypage_name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/activity_user_info_iv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="47dp"
+                android:text="@string/mypage_nim"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/activity_user_info_tv_name"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/activity_user_info_tv_birth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="17dp"
+                android:text="@string/mypage_birth"
+                app:layout_constraintStart_toEndOf="@+id/activity_user_info_iv"
+                app:layout_constraintTop_toBottomOf="@+id/activity_user_info_tv_name" />
+
+            <TextView
+                android:id="@+id/activity_user_info_tv_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/mypage_region"
+                app:layout_constraintStart_toEndOf="@+id/activity_user_info_tv_birth"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/mypage_score"
+                app:layout_constraintStart_toEndOf="@+id/activity_user_info_iv"
+                app:layout_constraintTop_toBottomOf="@+id/activity_user_info_tv_birth" />
+
+            <TextView
+                android:id="@+id/activity_user_info_tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/mypage_score_num"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
+                app:layout_constraintTop_toBottomOf="@+id/activity_user_info_tv_region" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="@string/mypage_jum"
+                app:layout_constraintStart_toEndOf="@+id/activity_user_info_tv_score"
+                app:layout_constraintTop_toBottomOf="@+id/activity_user_info_tv_region" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:text="@string/mypage_notice"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_user_info_iv" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="204dp"
+                android:minHeight="48dp"
+                android:text="@string/mypage_chat_notice"
+                android:textColor="@color/dimgray"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/switch2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:minHeight="48dp"
+                android:text="@string/mypage_post_notice"
+                android:textColor="@color/dimgray"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+            <Button
+                android:id="@+id/activity_user_info_btn_logout"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="28dp"
+                android:backgroundTint="@color/aliceblue"
+                android:drawableRight="@drawable/ic_baseline_navigate_next_24"
+                android:text="@string/mypage_logout"
+                android:textColor="@color/dimgray"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switch2" />
+
+            <Button
+                android:id="@+id/activity_user_info_btn_quit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/aliceblue"
+                android:drawableRight="@drawable/ic_baseline_navigate_next_24"
+                android:text="@string/mypage_quit"
+                android:textColor="@color/dimgray"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_user_info_btn_logout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
