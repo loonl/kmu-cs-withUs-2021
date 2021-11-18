@@ -13,9 +13,8 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": ["tsconfig.json", "tsconfig.dev.json"],
-    "sourceType": "module",
-    "tsconfigRootDir": "./functions"
+    "project": "path.join(__dirname, 'tsconfig*.json'",
+    "sourceType": "module"
   },
   "ignorePatterns": [
     "/dist/**/*"

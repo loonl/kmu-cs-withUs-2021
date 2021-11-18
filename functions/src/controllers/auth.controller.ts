@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { admin, db } from "../config/firebase"
+import { db } from "../config/firebase"
 
 
 /**
@@ -28,23 +28,21 @@ export const getUser = async (req: Request, res: Response): Promise<any> => {
  */
 export const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { email, password } = req.body
-    console.log(email, password)
-    if (!email && !password) {
+    const { displayName, birthDate, gender, region, interest } = req.body
+
+    if (!displayName && !birthDate && !gender && !region) {
       console.log("No payload from user")
       res.send({ "success": false }) // FIXME: throw empty payload error
     }
-    const userRecord = await admin.auth().createUser({
-      email: email,
-      password: password,
+    db.collection("User").add({
+      displayName: displayName,
+      birthDate: birthDate,
+      gender: gender,
+      region: region,
+      interest: interest,
     })
-    if (userRecord.uid) {
-      console.log(`Successfully created user ${userRecord.uid}`)
-      res.send({ "success": true })
-    } else {
-      console.log("Failed to create user")
-      res.send({ "success": false })
-    }
+    console.log("Created a new user")
+    res.send({ "success": false })
   } catch (error) {
     console.log("Error on creating a new user:", error)
   }

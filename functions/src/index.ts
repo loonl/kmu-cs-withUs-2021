@@ -16,11 +16,11 @@ app.on("error", (err) => {
   console.log(err)
 })
 
-app.get("/", (req: express.Request, res: express.Response) => {
-  res.status(200).send("GET request test")
+app.get("/test", (req: express.Request, res: express.Response) => {
+  res.send({ "title": "GET REQUEST TEST", "content": "Test Success" })
 })
-  .post("/", (req, res) => {
-    res.status(200).send(req.body)
+  .post("/test", (req, res) => {
+    res.send(req.body)
   })
 
 export const api = functions.region("asia-northeast3").https.onRequest(app)
