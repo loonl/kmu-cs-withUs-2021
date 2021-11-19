@@ -42,6 +42,7 @@
             android:text="@string/register_birth_ex" />
 
         <RadioGroup
+            android:id="@+id/activity_register_rg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
