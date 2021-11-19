@@ -125,16 +125,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        // child onClick listener
-        // 여기에서 Text 서버로 넘기면 됩니다.
-        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Toast.makeText(getApplicationContext(), "CHILD CLICKED!", Toast.LENGTH_SHORT).show(); // debug
-                return false;
-            }
-        });
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
