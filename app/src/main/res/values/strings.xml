@@ -71,4 +71,11 @@
     <string name="mypage_notice">알림설정</string>
 
 
+    <!-- ************************* User Info Change ************************* -->
+    <string name="user_info_change_pw"> 변경할 비밀번호를 입력하세요.</string>
+    <string name="user_info_change_name"> 변경할 이름을 입력하세요.</string>
+    <string name="user_info_change_birth"> 변경할 생년월일을 입력하세요.</string>
+    <string name="user_info_change_birth_ex">ex) 1999년생 01월 01일 생일 경우 19990101</string>
+    <string name="user_info_change_done">회원정보 수정하기</string>
+
 </resources>
