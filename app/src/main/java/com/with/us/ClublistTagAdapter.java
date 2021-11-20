@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ListTagAdapter extends RecyclerView.Adapter<ListTagAdapter.ViewHolder> {
+public class ClublistTagAdapter extends RecyclerView.Adapter<ClublistTagAdapter.ViewHolder> {
     private ArrayList<String> mData;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -23,7 +23,7 @@ public class ListTagAdapter extends RecyclerView.Adapter<ListTagAdapter.ViewHold
         }
     }
 
-    ListTagAdapter(ArrayList<String> list) {
+    ClublistTagAdapter(ArrayList<String> list) {
         mData = list;
     }
 

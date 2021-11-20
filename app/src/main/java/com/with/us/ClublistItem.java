@@ -1,6 +1,6 @@
 package com.with.us;
 
-public class ListItem {
+public class ClublistItem {
     private String name;
     private String description;
     private String score;
@@ -22,7 +22,7 @@ public class ListItem {
         return number;
     }
 
-    ListItem(String name, String description, String score, String number) {
+    ClublistItem(String name, String description, String score, String number) {
         this.name = name;
         this.description = description;
         this.score = score;

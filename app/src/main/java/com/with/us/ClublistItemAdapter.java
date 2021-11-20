@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListItemAdapter extends BaseAdapter {
-    ArrayList<ListItem> items = new ArrayList<>();
+public class ClublistItemAdapter extends BaseAdapter {
+    ArrayList<ClublistItem> items = new ArrayList<>();
     Context context;
 
     @Override
@@ -31,7 +31,7 @@ public class ListItemAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         context = parent.getContext();
-        ListItem listItem = items.get(position);
+        ClublistItem listItem = items.get(position);
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -51,7 +51,7 @@ public class ListItemAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(ListItem item) {
+    public void addItem(ClublistItem item) {
         items.add(item);
     }
 }
