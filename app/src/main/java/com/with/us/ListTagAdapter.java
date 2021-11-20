@@ -32,7 +32,7 @@ public class ListTagAdapter extends RecyclerView.Adapter<ListTagAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.activity_list_tag, parent, false);
+        View view = inflater.inflate(R.layout.activity_clublist_tag, parent, false);
         return new ViewHolder(view);
     }
 

@@ -35,7 +35,7 @@ public class ListItemAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.activity_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.activity_clublist_item, parent, false);
         }
 
         TextView nameText = convertView.findViewById(R.id.list_title);
