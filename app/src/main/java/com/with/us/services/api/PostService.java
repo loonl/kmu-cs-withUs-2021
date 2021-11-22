@@ -2,22 +2,24 @@ package com.with.us.services.api;
 
 import com.with.us.models.PostDetail;
 
-import io.reactivex.Observable;
+import java.util.List;
+
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface PostService {
     @GET("post/get")
-    Observable<PostDetail> getPostDetail();
+    Call<List<PostDetail>> getPostDetail(@Header("Authorization") String auth);
 
     @POST("post/create")
-    Observable<PostDetail> createPostDetail(@Body PostDetail PostDetail);
+    Call<List<PostDetail>> createPostDetail(@Header("Authorization") String auth, @Body PostDetail postDetail);
 
     @POST("post/modify")
-    Observable<PostDetail> modifyPostDetail(@Body PostDetail PostDetail);
+    Call<List<PostDetail>> modifyPostDetail(@Header("Authorization") String auth, @Body PostDetail postDetail);
 
     @GET("post/delete")
-    Observable<PostDetail> deletePostDetail();
+    Call<List<PostDetail>> deletePostDetail(@Header("Authorization") String auth);
 }

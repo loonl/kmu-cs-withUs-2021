@@ -17,6 +17,7 @@ export const userVerifyToken = async (req: Request, res: Response, next: NextFun
       res.locals.uid = decodedIdToken.uid
       res.locals.email = decodedIdToken.email
       console.log("User uid: ", res.locals.uid)
+      next()
     } else {
       // Anonymous user
       next()

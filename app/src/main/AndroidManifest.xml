@@ -31,6 +31,12 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
+        <activity
+            android:name=".UserInfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserInfoChangeActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

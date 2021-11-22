@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.with.us.utils.FirebaseHelper;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -64,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseHelper.setAccessToken(RegisterActivity.this);
                             signUpContinue();
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
