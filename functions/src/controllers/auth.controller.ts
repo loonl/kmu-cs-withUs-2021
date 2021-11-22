@@ -1,15 +1,15 @@
 import { Request, Response } from "express"
-import { db } from "../config/firebase"
+import { admin, db } from "../config/firebase"
 
 
 /**
  * Get user data
  * @route GET /user/get
  */
-export const getUser = async (req: Request, res: Response): Promise<any> => {
+export const getUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    const userData = (await db.collection("User").doc(res.locals.uid).get()).data()
-    if (userData) {
+    const userData = (await (db.collection("User").doc(res.locals.uid).get())).data()
+    if (userData != null) {
       console.log(userData)
       res.json(userData)
     } else {
@@ -34,7 +34,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
       console.log("No payload from user")
       res.send({ "success": false }) // FIXME: throw empty payload error
     }
-    db.collection("User").add({
+    await db.collection("User").doc(res.locals.uid).set({
       displayName: displayName,
       birthDate: birthDate,
       gender: gender,
@@ -68,8 +68,17 @@ export const modifyUser = async (req: Request, res: Response): Promise<void> => 
  */
 export const deleteUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    // TODO:
+    if (res.locals.uid == null) {
+      res.send({ "success": false })
+    }
+    const userData = await db.collection("User").doc(res.locals.uid).get()
+    if (userData.exists) {
+      await admin.auth().deleteUser(res.locals.uid)
+      await db.collection("User").doc(res.locals.uid).delete()
+      console.log("Successfully deleted user")
+      res.send({ "success": true })
+    }
   } catch (error) {
-    // TODO:
+    console.log("Error on creating a new user:", error)
   }
 }

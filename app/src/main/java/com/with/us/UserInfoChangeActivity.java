@@ -8,9 +8,9 @@ import android.widget.Spinner;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserInfoChange extends AppCompatActivity {
+public class UserInfoChangeActivity extends AppCompatActivity {
 
-    EditText activity_user_info_change_et_pw,activity_user_info_change_et_name,activity_user_info_change_et_birth;
+    EditText activity_user_info_change_et_pw, activity_user_info_change_et_name, activity_user_info_change_et_birth;
     RadioGroup activity_user_info_change_rg;
     Spinner activity_user_info_change_spn_region, activity_user_info_change_spn_interest;
 

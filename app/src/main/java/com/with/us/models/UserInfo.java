@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class UserInfo implements Parcelable {
-//    public String email;
     public String displayName;
     public int birthDate;
     public String gender;
@@ -14,7 +13,6 @@ public class UserInfo implements Parcelable {
     public String interest;
 
     public UserInfo(String displayName, int birthDate, String gender, String region, String interest) {
-//        this.email = email;
         this.displayName = displayName;
         this.birthDate = birthDate;
         this.gender = gender;
@@ -23,7 +21,6 @@ public class UserInfo implements Parcelable {
     }
 
     protected UserInfo(Parcel in) {
-//        email = in.readString();
         displayName = in.readString();
         birthDate = in.readInt();
         gender = in.readString();

@@ -17,20 +17,25 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.with.us.models.UserInfo;
 import com.with.us.services.auxiliary.RequestHelper;
+import com.with.us.utils.FirebaseHelper;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivityFragment extends Fragment {
 
     private static final String TAG = "RegisterActivityFragment";
 
-    RequestHelper helper;
+    FirebaseAuth mAuth;
+    FirebaseUser user;
     Spinner region_spinner, interest_spinner;
-    String gender;
-    EditText name;
+    EditText displayName;
     EditText birthDate;
     RadioGroup activity_register_rg;
     Button activity_register_fragment_btn;
@@ -47,16 +52,16 @@ public class RegisterActivityFragment extends Fragment {
         View register_view = inflater.inflate(R.layout.activity_register_fragment, container, false);
 
         region_spinner = (Spinner) register_view.findViewById(R.id.activity_register_spn_region);
-        interest_spinner= (Spinner) register_view.findViewById(R.id.activity_register_spn_interest);
-        name = register_view.findViewById(R.id.activity_register_et_name);
+        interest_spinner = (Spinner) register_view.findViewById(R.id.activity_register_spn_interest);
+        displayName = register_view.findViewById(R.id.activity_register_et_name);
         birthDate = register_view.findViewById(R.id.activity_register_et_birth);
         activity_register_rg = register_view.findViewById(R.id.activity_register_rg);
         activity_register_fragment_btn = register_view.findViewById(R.id.activity_register_fragment_btn);
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
 
         makeSpinner(region_spinner, R.array.region);
         makeSpinner(interest_spinner, R.array.interest);
-
-        helper = new RequestHelper(getActivity(), TAG);
 
         activity_register_fragment_btn.setOnClickListener(new View.OnClickListener() {
             String region = String.valueOf(region_spinner.getSelectedItem());
@@ -64,9 +69,13 @@ public class RegisterActivityFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                RadioButton gender = (RadioButton) register_view.findViewById(activity_register_rg.getCheckedRadioButtonId());
-                UserInfo userInfo = new UserInfo(name.getText().toString(), Integer.parseInt(birthDate.getText().toString()), gender.getText().toString(), region, interest);
+                RadioButton gender = (RadioButton) register_view
+                        .findViewById(activity_register_rg.getCheckedRadioButtonId());
+                UserInfo userInfo = new UserInfo(displayName.getText().toString(),
+                        Integer.parseInt(birthDate.getText().toString()), gender.getText().toString(), region,
+                        interest);
                 createUser(userInfo);
+                Toast.makeText(requireContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -74,17 +83,32 @@ public class RegisterActivityFragment extends Fragment {
     }
 
     private void makeSpinner(Spinner spinner, int array) {
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getContext(), array, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getContext(), array,
+                android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
 
     private void createUser(UserInfo userInfo) {
-        helper.postRequest(userInfo);
-        Toast.makeText(getContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+        RequestHelper.getUserAPI().createUserInfo("Bearer " + FirebaseHelper.getAccessToken(requireContext()), userInfo)
+                .enqueue(new Callback<UserInfo>() {
+                    @Override
+                    public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
+                        if (response.isSuccessful()) {
+                            FirebaseHelper.setAccessToken(getContext());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserInfo> call, Throwable t) {
+
+                    }
+
+                });
 
         Intent intent = new Intent();
-        intent.setClass(getActivity(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setClass(getActivity(), LoginActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
