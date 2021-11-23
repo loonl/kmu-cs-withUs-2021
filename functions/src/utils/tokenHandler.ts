@@ -23,6 +23,6 @@ export const userVerifyToken = async (req: Request, res: Response, next: NextFun
       next()
     }
   } catch (error) {
-    throw Error("Uncaught error")
+    console.log(error)
   }
 }

@@ -11,19 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ClublistTagAdapter extends RecyclerView.Adapter<ClublistTagAdapter.ViewHolder> {
+public class ClubListTagAdapter extends RecyclerView.Adapter<ClubListTagAdapter.ViewHolder> {
     private ArrayList<String> mData;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView1;
+        TextView textView;
 
         ViewHolder(View itemview) {
             super(itemview);
-            textView1 = itemview.findViewById(R.id.tag_name);
+            textView = itemview.findViewById(R.id.tag_name);
         }
     }
 
-    ClublistTagAdapter(ArrayList<String> list) {
+    ClubListTagAdapter(ArrayList<String> list) {
         mData = list;
     }
 
@@ -39,7 +39,7 @@ public class ClublistTagAdapter extends RecyclerView.Adapter<ClublistTagAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String text = mData.get(position);
-        holder.textView1.setText(text);
+        holder.textView.setText(text);
     }
 
     @Override

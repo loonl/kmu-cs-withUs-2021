@@ -9,10 +9,11 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface PostService {
     @GET("post/get")
-    Call<List<PostDetail>> getPostDetail(@Header("Authorization") String auth);
+    Call<List<PostDetail>> getPostDetail(@Header("Authorization") String auth, @Query("category") String category);
 
     @POST("post/create")
     Call<List<PostDetail>> createPostDetail(@Header("Authorization") String auth, @Body PostDetail postDetail);

@@ -1,31 +1,31 @@
 package com.with.us;
 
-public class ClublistItem {
-    private String name;
-    private String description;
-    private String score;
-    private String number;
+public class ClubListItem {
+    private String title;
+    private String content;
+    private int likes;
+    private int comments;
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContent() {
+        return content;
     }
 
-    public String getScore() {
-        return score;
+    public int getLikes() {
+        return likes;
     }
 
-    public String getNumber() {
-        return number;
+    public int getComments() {
+        return comments;
     }
 
-    ClublistItem(String name, String description, String score, String number) {
-        this.name = name;
-        this.description = description;
-        this.score = score;
-        this.number = number;
+    public ClubListItem(String title, String content, int likes, int comments) {
+        this.title = title;
+        this.content = content;
+        this.likes = likes;
+        this.comments = comments;
     }
 }
