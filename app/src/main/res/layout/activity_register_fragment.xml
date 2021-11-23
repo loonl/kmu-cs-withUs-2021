@@ -96,7 +96,7 @@
             android:id="@+id/activity_register_fragment_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/main"
+            android:backgroundTint="@color/indigo"
             android:text="@string/register_done" />
 
     </LinearLayout>
