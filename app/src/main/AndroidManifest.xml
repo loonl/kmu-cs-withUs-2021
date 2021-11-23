@@ -28,6 +28,12 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
+        <activity
+            android:name=".CommentReplyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PostDetailActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
