@@ -11,7 +11,7 @@ public class RetrofitService {
 
     public static Retrofit getRetrofit() {
 
-        return new Retrofit.Builder().baseUrl(ApiConstants.FIREBASE_BASE_URL)
+        return new Retrofit.Builder().baseUrl(ApiConstants.TEST_FIREBASE_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()).build();
     }
 }
