@@ -1,5 +1,7 @@
 package com.with.us;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,7 +51,7 @@ public class UserInfoActivity extends AppCompatActivity {
         activity_user_info_tv_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent user_info_change_intent = new Intent(UserInfoActivity.this, UserInfoActivity.class);
+                Intent user_info_change_intent = new Intent(UserInfoActivity.this, UserInfoChangeActivity.class);
                 startActivity(user_info_change_intent);
             }
         });
@@ -66,12 +68,15 @@ public class UserInfoActivity extends AppCompatActivity {
         activity_user_info_btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 로그아웃 하시겠습니까? 창 띄우기
-                mAuth.signOut();
-                Intent intent = new Intent();
-                intent.setClass(UserInfoActivity.this, LoginActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                new AlertDialog.Builder(UserInfoActivity.this).setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?").setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(UserInfoActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                        mAuth.signOut();
+                        Intent intent = new Intent();
+                        intent.setClass(UserInfoActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                }).setNegativeButton(android.R.string.cancel, null).setIcon(android.R.drawable.ic_dialog_alert).show();
             }
         });
 
@@ -79,17 +84,15 @@ public class UserInfoActivity extends AppCompatActivity {
         activity_user_info_btn_quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 계정을 삭제하시겠습니까? 창 띄우기
-                RequestHelper.getUserAPI()
-                        .deleteUserInfo("Bearer " + FirebaseHelper.getAccessToken(UserInfoActivity.this))
-                        .enqueue(new Callback<UserInfo>() {
+                new AlertDialog.Builder(UserInfoActivity.this).setTitle("회원탈퇴").setMessage("회원을 탈퇴 하시겠습니까?").setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        mAuth.signOut();
+                        RequestHelper.getUserAPI().deleteUserInfo("Bearer " + FirebaseHelper.getAccessToken(UserInfoActivity.this)).enqueue(new Callback<UserInfo>() {
                             @Override
                             public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
                                 Toast.makeText(UserInfoActivity.this, "계정을 삭제하였습니다.", Toast.LENGTH_SHORT).show();
-
                                 Intent intent = new Intent();
-                                intent.setClass(UserInfoActivity.this, LoginActivity.class)
-                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.setClass(UserInfoActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             }
 
@@ -98,6 +101,8 @@ public class UserInfoActivity extends AppCompatActivity {
 
                             }
                         });
+                    }
+                }).setNegativeButton(android.R.string.cancel, null).setIcon(android.R.drawable.ic_dialog_alert).show();
             }
         });
 
@@ -109,22 +114,29 @@ public class UserInfoActivity extends AppCompatActivity {
 
     private void getUserData() {
         TextView userName = findViewById(R.id.activity_user_info_tv_name);
+        TextView birthDate = findViewById(R.id.activity_user_info_tv_birth);
+        TextView region = findViewById(R.id.activity_user_info_tv_region);
 
-        RequestHelper.getUserAPI().getUserInfo("Bearer " + FirebaseHelper.getAccessToken(this))
-                .enqueue(new Callback<UserInfo>() {
-                    @Override
-                    public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-                        if (response.isSuccessful()) {
-                            userName.setText(response.body().displayName);
-                        }
-                    }
+        RequestHelper.getUserAPI().getUserInfo("Bearer " + FirebaseHelper.getAccessToken(this)).enqueue(new Callback<UserInfo>() {
+            @Override
+            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
+                if (response.isSuccessful()) {
+                    userName.setText(response.body().displayName);
+                    birthDate.setText(String.valueOf(response.body().birthDate));
+                    region.setText(response.body().region);
+                }
+            }
 
-                    @Override
-
-                    public void onFailure(Call<UserInfo> call, Throwable t) {
-                        Log.e(TAG, t.getMessage());
-                    }
-                });
+            @Override
+            public void onFailure(Call<UserInfo> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+            }
+        });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getUserData();
+    }
 }

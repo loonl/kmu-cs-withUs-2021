@@ -39,10 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // activity_register_btn_continue 눌렀을때 아이디중복, 비밀번호 조건 확인 필요 코드 작성해야함 -> 조건 만족시
-                // fragment 실행
-                //
-                //
                 String email = activity_register_et_id.getText().toString();
                 String password = activity_register_et_pw.getText().toString();
                 if (email.isEmpty() || password.isEmpty() || email.trim().isEmpty() || password.trim().isEmpty()) {

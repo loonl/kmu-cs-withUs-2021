@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class ClubListItemAdapter extends BaseAdapter {
         content.setText(listItem.getContent());
         likes.setText(String.valueOf(listItem.getLikes()));
         comments.setText(String.valueOf(listItem.getComments()));
-        Picasso.get().load(Uri.parse(listItem.getPostImage())).fit().into(imageView);
+        Picasso.get().load(Uri.parse(listItem.getPostImage())).fit().networkPolicy(NetworkPolicy.OFFLINE).into(imageView);
 
         return convertView;
     }
