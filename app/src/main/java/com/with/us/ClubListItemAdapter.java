@@ -1,11 +1,15 @@
 package com.with.us;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,11 +46,13 @@ public class ClubListItemAdapter extends BaseAdapter {
         TextView content = convertView.findViewById(R.id.activity_club_list_content);
         TextView likes = convertView.findViewById(R.id.activity_club_list_likes);
         TextView comments = convertView.findViewById(R.id.activity_club_list_comments);
+        ImageView imageView = convertView.findViewById(R.id.list_title_image);
 
         title.setText(listItem.getTitle());
         content.setText(listItem.getContent());
         likes.setText(String.valueOf(listItem.getLikes()));
         comments.setText(String.valueOf(listItem.getComments()));
+        Picasso.get().load(Uri.parse(listItem.getPostImage())).fit().into(imageView);
 
         return convertView;
     }

@@ -5,6 +5,7 @@ public class ClubListItem {
     private String content;
     private int likes;
     private int comments;
+    private String postImage;
 
     public String getTitle() {
         return title;
@@ -22,10 +23,15 @@ public class ClubListItem {
         return comments;
     }
 
-    public ClubListItem(String title, String content, int likes, int comments) {
+    public String getPostImage() {
+        return postImage;
+    }
+
+    public ClubListItem(String title, String content, int likes, int comments, String postImage) {
         this.title = title;
         this.content = content;
         this.likes = likes;
         this.comments = comments;
+        this.postImage = postImage;
     }
 }

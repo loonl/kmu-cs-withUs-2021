@@ -5,10 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.squareup.picasso.Picasso;
 import com.with.us.models.PostDetail;
 import com.with.us.services.auxiliary.RequestHelper;
 import com.with.us.utils.FirebaseHelper;
@@ -61,7 +64,7 @@ public class ClubListActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             List<PostDetail> posts = response.body();
                             for (PostDetail post : posts) {
-                                adapter.addItem(new ClubListItem(post.title, post.content, post.likes, post.comments));
+                                adapter.addItem(new ClubListItem(post.title, post.content, post.likes, post.comments, post.postImage));
                             }
                             listView.setAdapter(adapter);
                         }
