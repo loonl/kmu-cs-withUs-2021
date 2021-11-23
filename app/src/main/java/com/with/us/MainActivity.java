@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,17 +24,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.gson.Gson;
 import com.with.us.databinding.ActivityMainBinding;
-import com.with.us.models.Test;
 import com.with.us.models.UserInfo;
-import com.with.us.services.RetrofitService;
 import com.with.us.services.auxiliary.RequestHelper;
 import com.with.us.utils.FirebaseHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
     DrawerLayout drawer;
     NavigationView navigationView;
+    ListCategoryAdapter listCategoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,25 +75,26 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         // Set List Category
-        ArrayList<ListCategory> DataList = new ArrayList<ListCategory>();
+        ArrayList<ListCategory> dataList = new ArrayList<ListCategory>();
         listView = binding.lvCategory;
-        makeListCategory(DataList, "지역", R.array.region);
-        makeListCategory(DataList, "관심사", R.array.interest);
-        setListCategory(DataList);
+        makeListCategory(dataList, "지역", R.array.region);
+        makeListCategory(dataList, "관심사", R.array.interest);
+        setListCategory(dataList);
 
         if (user != null) {
-//            FirebaseHelper.setAccessToken(this);
+            // Initialize idToken
+            FirebaseHelper.setAccessToken(this);
             getUserData();
         }
     }
 
-    private void setListCategory(ArrayList<ListCategory> DataList) {
-        ListCategoryAdapter listCategoryAdapter = new ListCategoryAdapter(getApplicationContext(),
-                R.layout.item_main_group, R.layout.item_main_child, DataList);
+    private void setListCategory(ArrayList<ListCategory> dataList) {
+        listCategoryAdapter = new ListCategoryAdapter(getApplicationContext(), R.layout.item_main_group,
+                R.layout.item_main_child, dataList);
         listView.setAdapter(listCategoryAdapter);
     }
 
-    private void makeListCategory(ArrayList<ListCategory> DataList, String alias, int array) {
+    private void makeListCategory(ArrayList<ListCategory> dataList, String alias, int array) {
         ListCategory temp = new ListCategory(alias);
         Resources res = getResources();
         String[] regions_temp = res.getStringArray(array);
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             temp.getChild().add(element);
         }
 
-        DataList.add(temp);
+        dataList.add(temp);
     }
 
     private void setActionBar(ActionBar actionBar) {
@@ -148,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-
                     public void onFailure(Call<UserInfo> call, Throwable t) {
                         Log.e(TAG, t.getMessage());
                     }
@@ -188,6 +186,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+
+        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition,
+                    long id) {
+                String category = (String) listCategoryAdapter.getChild(groupPosition, childPosition);
+                Intent intent = new Intent(MainActivity.this, ClubListActivity.class);
+                intent.putExtra("category", category);
+                startActivity(intent);
+                return false;
+            }
+        });
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 

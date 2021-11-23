@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.with.us.utils.FirebaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
                             // FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseHelper.setAccessToken(getApplicationContext());
 
                             Toast.makeText(LoginActivity.this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

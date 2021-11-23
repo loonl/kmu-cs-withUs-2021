@@ -37,6 +37,9 @@
         <activity
             android:name=".UserInfoChangeActivity"
             android:exported="true" />
+        <activity
+            android:name=".ClubListActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

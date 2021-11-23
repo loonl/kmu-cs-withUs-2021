@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ClublistItemAdapter extends BaseAdapter {
-    ArrayList<ClublistItem> items = new ArrayList<>();
+public class ClubListItemAdapter extends BaseAdapter {
+    ArrayList<ClubListItem> items = new ArrayList<>();
     Context context;
 
     @Override
@@ -31,27 +31,27 @@ public class ClublistItemAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         context = parent.getContext();
-        ClublistItem listItem = items.get(position);
+        ClubListItem listItem = items.get(position);
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.activity_clublist_item, parent, false);
         }
 
-        TextView nameText = convertView.findViewById(R.id.list_title);
-        TextView descriptionText = convertView.findViewById(R.id.list_description);
-        TextView scoreText = convertView.findViewById(R.id.list_score);
-        TextView numberText = convertView.findViewById(R.id.list_number);
+        TextView title = convertView.findViewById(R.id.activity_club_list_title);
+        TextView content = convertView.findViewById(R.id.activity_club_list_content);
+        TextView likes = convertView.findViewById(R.id.activity_club_list_likes);
+        TextView comments = convertView.findViewById(R.id.activity_club_list_comments);
 
-        nameText.setText(listItem.getName());
-        descriptionText.setText(listItem.getDescription());
-        scoreText.setText(listItem.getScore());
-        numberText.setText(listItem.getNumber());
+        title.setText(listItem.getTitle());
+        content.setText(listItem.getContent());
+        likes.setText(String.valueOf(listItem.getLikes()));
+        comments.setText(String.valueOf(listItem.getComments()));
 
         return convertView;
     }
 
-    public void addItem(ClublistItem item) {
+    public void addItem(ClubListItem item) {
         items.add(item);
     }
 }
