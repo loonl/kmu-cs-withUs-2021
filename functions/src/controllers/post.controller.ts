@@ -1,14 +1,26 @@
 import { Request, Response } from "express"
-// import { admin, db } from "../config/firebase"
+import { db } from "../config/firebase"
 
 
 /**
  * Get post data
  * @route GET /post/get
  */
-export const getPost = async (req: Request, res: Response): Promise<any> => {
+export const getPost = async (req: Request, res: Response): Promise<void> => {
   try {
-    // TODO:
+    const { category } = req.query
+    console.log(category)
+    const snapshot = await db
+      .collection("Post")
+      .where("category", "==", category)
+      // .orderBy("createdAt", "desc")
+      .get()
+    const result = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }))
+    console.log(result)
+    res.send(result)
   } catch (error) {
     // TODO:
   }
