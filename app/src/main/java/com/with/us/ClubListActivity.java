@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 import com.with.us.models.PostDetail;
 import com.with.us.services.auxiliary.RequestHelper;
@@ -28,6 +30,7 @@ public class ClubListActivity extends AppCompatActivity {
     private static final String TAG = "ClubListActivity";
 
     ListView listView;
+    FloatingActionButton fab;
     ClubListItemAdapter adapter;
     String category;
 
@@ -36,14 +39,14 @@ public class ClubListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clublist);
         category = getIntent().getStringExtra("category");
-
+        fab = findViewById(R.id.fab_write_post);
 
         ArrayList<String> list = new ArrayList<>();
         list.add("태그1");
-        list.add("태그2");
-        list.add("태그3");
-        list.add("태그4");
-        list.add("태그5");
+        // list.add("태그2");
+        // list.add("태그3");
+        // list.add("태그4");
+        // list.add("태그5");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -53,6 +56,15 @@ public class ClubListActivity extends AppCompatActivity {
         listView = findViewById(R.id.listview);
         adapter = new ClubListItemAdapter();
         getPost(listView, adapter);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ClubListActivity.this, PostFormActivity.class);
+                intent.putExtra("category", category);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -64,7 +76,8 @@ public class ClubListActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             List<PostDetail> posts = response.body();
                             for (PostDetail post : posts) {
-                                adapter.addItem(new ClubListItem(post.title, post.content, post.likes, post.comments, post.postImage));
+                                adapter.addItem(new ClubListItem(post.title, post.content, post.likes, post.comments,
+                                        post.postImage));
                             }
                             listView.setAdapter(adapter);
                         }
@@ -77,4 +90,9 @@ public class ClubListActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    // @Override
+    // protected void onResume() {
+    // super.onResume();
+    // }
 }

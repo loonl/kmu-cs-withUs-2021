@@ -60,7 +60,7 @@
     <string name="mypage_nim">님</string>
     <string name="mypage_birth">생년월일</string>
     <string name="mypage_region">지역</string>
-    <string name="mypage_score">활동점수 :</string>
+    <string name="mypage_score">활동점수</string>
     <string name="mypage_jum">점</string>
     <string name="mypage_score_num">0</string>
     <string name="mypage_change"> 회원정보 수정</string>
@@ -72,10 +72,18 @@
 
 
     <!-- ************************* User Info Change ************************* -->
+    <string name="user_info_change_text">회원정보 변경</string>
     <string name="user_info_change_pw"> 변경할 비밀번호를 입력하세요.</string>
     <string name="user_info_change_name"> 변경할 이름을 입력하세요.</string>
     <string name="user_info_change_birth"> 변경할 생년월일을 입력하세요.</string>
     <string name="user_info_change_birth_ex">ex) 1999년생 01월 01일 생일 경우 19990101</string>
     <string name="user_info_change_done">회원정보 수정하기</string>
+
+
+    <!-- ************************* Post Form ************************* -->
+    <string name="post_form_text">게시글 작성</string>
+    <string name="post_form_title">제목</string>
+    <string name="post_form_content">내용</string>
+    <string name="post_form_done">게시글 작성 완료하기</string>
 
 </resources>

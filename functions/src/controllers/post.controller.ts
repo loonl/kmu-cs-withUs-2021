@@ -22,7 +22,7 @@ export const getPost = async (req: Request, res: Response): Promise<void> => {
     console.log(result)
     res.send(result)
   } catch (error) {
-    // TODO:
+    console.log("Error on getting posts:", error)
   }
 }
 
@@ -33,9 +33,25 @@ export const getPost = async (req: Request, res: Response): Promise<void> => {
  */
 export const createPost = async (req: Request, res: Response): Promise<void> => {
   try {
-    // TODO:
+    const { author, category, displayName, title, content, postImage } = req.body
+    if (!author && !category && !displayName && !title && !content) {
+      console.log("No payload from user")
+      res.send({ "success": false }) // FIXME: throw empty payload error
+    }
+
+    await db.collection("Post").add({
+      author: author,
+      category: category,
+      displayName: displayName,
+      title: title,
+      content: content,
+      likes: 0,
+      comments: 0,
+      postImage: postImage,
+    })
+    res.send({ success: true })
   } catch (error) {
-    // TODO:
+    console.log("Error on creating a new post:", error)
   }
 }
 

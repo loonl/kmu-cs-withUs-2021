@@ -42,7 +42,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
       interest: interest,
     })
     console.log("Created a new user")
-    res.send({ "success": false })
+    res.send({ "success": true })
   } catch (error) {
     console.log("Error on creating a new user:", error)
   }
@@ -55,9 +55,23 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
  */
 export const modifyUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    // TODO:
+    const { displayName, birthDate, region, interest } = req.body
+
+    if (!displayName && !birthDate && !region && !interest) {
+      console.log("No payload from user")
+      res.send({ "success": false }) // FIXME: throw empty payload error
+    }
+
+    await db.collection("User").doc(res.locals.uid).update({
+      displayName: displayName,
+      birthDate: birthDate,
+      region: region,
+      interest: interest,
+    })
+    console.log("Updated user information")
+    res.send({ "success": true })
   } catch (error) {
-    // TODO:
+    console.log("Error on updating user information:", error)
   }
 }
 
