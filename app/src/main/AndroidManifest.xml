@@ -43,6 +43,12 @@
         <activity
             android:name=".PostFormActivity"
             android:exported="true" />
+        <activity
+            android:name=".CommentReplyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PostDetailActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
