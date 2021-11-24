@@ -1,5 +1,7 @@
 package com.with.us;
 
+import android.net.Uri;
+
 public class ClubListItem {
     private String title;
     private String content;
@@ -32,6 +34,6 @@ public class ClubListItem {
         this.content = content;
         this.likes = likes;
         this.comments = comments;
-        this.postImage = postImage;
+        this.postImage = postImage.toString();
     }
 }
