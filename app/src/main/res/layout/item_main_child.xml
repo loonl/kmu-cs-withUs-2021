@@ -4,13 +4,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/list_child"
+        android:id="@+id/text_category_child"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="45dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
+        android:layout_marginLeft="@dimen/category_child_marginleft"
+        android:paddingTop="@dimen/category_child_padding"
+        android:paddingBottom="@dimen/category_child_padding"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="@dimen/category_child_textsize" />
 
 </LinearLayout>

@@ -23,10 +23,11 @@ import java.util.ArrayList;
 
 public class PostDetailActivity extends AppCompatActivity {
 
-    private TextView text_title, text_content, text_date, text_userid;
-    private Button btn_commentok;
-    private EditText et_comment;
-    private LinearLayout layout_content, layout_comment;
+    private TextView ctivity_postdetail_tv_title, activity_postdetail_tv_userid,
+            activity_postdetail_tv_date;
+    private Button activity_postdetail_btn_commentok;
+    private EditText activity_postdetail_et_comment;
+    private LinearLayout activity_postdetail_layout_content, activity_postdetail_layout_comment;
     private ActivityResultLauncher<Intent> resultLauncher;
 
     @Override
@@ -35,16 +36,16 @@ public class PostDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_postdetail);
 
         // 컴포넌트 초기화
-        text_title = findViewById(R.id.text_postdetail_title);
-        text_userid = findViewById(R.id.text_postdetail_userid);
-        text_date = findViewById(R.id.text_postdetail_date);
+        ctivity_postdetail_tv_title = findViewById(R.id.activity_postdetail_tv_title);
+        activity_postdetail_tv_userid = findViewById(R.id.activity_postdetail_tv_userid);
+        activity_postdetail_tv_date = findViewById(R.id.activity_postdetail_tv_date);
 
-        btn_commentok = findViewById(R.id.btn_postdetail_commentok);
+        activity_postdetail_btn_commentok = findViewById(R.id.activity_postdetail_btn_commentok);
 
-        et_comment = findViewById(R.id.et_postdetail_comment);
+        activity_postdetail_et_comment = findViewById(R.id.activity_postdetail_et_comment);
 
-        layout_content = findViewById(R.id.layout_postdetail_content);
-        layout_comment = findViewById(R.id.layout_comment);
+        activity_postdetail_layout_content = findViewById(R.id.activity_postdetail_layout_content);
+        activity_postdetail_layout_comment = findViewById(R.id.activity_postdetail_layout_comment);
 
         LayoutInflater layoutInflater = LayoutInflater.from(PostDetailActivity.this);
 
@@ -53,17 +54,17 @@ public class PostDetailActivity extends AppCompatActivity {
         ImageView iv = new ImageView(this);
         iv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         iv.setImageResource(R.drawable.ic_launcher_foreground);
-        layout_content.addView(iv);
+        activity_postdetail_layout_content.addView(iv);
 
         // textView의 경우
         TextView tv = new TextView(this);
         tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         tv.setText("hello world!");
         tv.setTextSize(13);
-        layout_content.addView(tv);
+        activity_postdetail_layout_content.addView(tv);
 
         // 등록하기 버튼을 눌렀을 때 이벤트
-        btn_commentok.setOnClickListener(new View.OnClickListener() {
+        activity_postdetail_btn_commentok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -72,16 +73,16 @@ public class PostDetailActivity extends AppCompatActivity {
                 View tempView = layoutInflater.inflate(R.layout.item_postdetail_comments, null);
 
                 // 넣어줄 View 안에 내용 설정 <= 서버에서 받아오시려면 이 부분 수정하시면 될 듯 합니다.
-                String text = et_comment.getText().toString();
+                String text = activity_postdetail_et_comment.getText().toString();
                 ((TextView) tempView.findViewById(R.id.text_comment_userid)).setText("테스트닉네임");
                 ((TextView) tempView.findViewById(R.id.text_comment_content)).setText(text);
                 ((TextView) tempView.findViewById(R.id.text_comment_date)).setText("2021.11.23 23:43");
 
                 // comment Layout 에 넣어주기
-                layout_comment.addView(tempView);
+                activity_postdetail_layout_comment.addView(tempView);
 
                 // 키보드 없애고, getText 지워주기
-                et_comment.getText().clear();
+                activity_postdetail_et_comment.getText().clear();
                 InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
@@ -113,7 +114,7 @@ public class PostDetailActivity extends AppCompatActivity {
                             ((TextView) tempView.findViewById(R.id.text_comment_userid)).setText("테스트닉네임");
                             ((TextView) tempView.findViewById(R.id.text_comment_content)).setText(text);
                             ((TextView) tempView.findViewById(R.id.text_comment_date)).setText("2021.11.23 23:43");
-                            layout_comment.addView(tempView);
+                            activity_postdetail_layout_comment.addView(tempView);
                         }
                     }
                 }); // end resultLauncher

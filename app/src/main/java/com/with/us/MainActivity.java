@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set List Category
         ArrayList<ListCategory> dataList = new ArrayList<ListCategory>();
-        listView = binding.lvCategory;
+        listView = binding.activityMainElvCategory;
         makeListCategory(dataList, "지역", R.array.region);
         makeListCategory(dataList, "관심사", R.array.interest);
         setListCategory(dataList);
