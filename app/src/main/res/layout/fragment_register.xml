@@ -8,11 +8,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="@dimen/fg_register_layout_margintop"
         android:gravity="center|top"
         android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp">
+        android:paddingLeft="@dimen/fg_register_layout_paddingleft"
+        android:paddingRight="@dimen/fg_register_layout_paddingright">
 
         <EditText
             android:id="@+id/activity_register_et_name"
@@ -21,22 +21,21 @@
             android:hint="@string/register_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textSize="16sp" />
+            android:minHeight="@dimen/fg_register_name_minheight"
+            android:textSize="@dimen/fg_register_name_textsize" />
 
         <EditText
             android:id="@+id/activity_register_et_birth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/fg_register_birth_margintop"
             android:hint="@string/register_birth"
             android:importantForAutofill="no"
             android:inputType="date"
-            android:minHeight="48dp"
-            android:textSize="16sp" />
+            android:minHeight="@dimen/fg_register_birth_minheight"
+            android:textSize="@dimen/fg_register_birth_textsize" />
 
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register_birth_ex" />
@@ -49,21 +48,20 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/activity_register_rb_woman"
-                android:layout_width="155dp"
+                android:id="@+id/activity_register_rb_female"
+                android:layout_width="@dimen/fg_register_female_width"
                 android:layout_height="wrap_content"
-                android:text="@string/register_woman" />
+                android:text="@string/register_female" />
 
             <RadioButton
-                android:id="@+id/activity_register_rb_man"
-                android:layout_width="155dp"
+                android:id="@+id/activity_register_rb_male"
+                android:layout_width="@dimen/fg_register_male_width"
                 android:layout_height="wrap_content"
-                android:text="@string/register_man" />
+                android:text="@string/register_male" />
 
         </RadioGroup>
 
         <TextView
-            android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register_region" />
@@ -74,11 +72,10 @@
             android:layout_height="wrap_content"
             android:entries="@array/region"
             android:gravity="center"
-            android:minHeight="48dp"
+            android:minHeight="@dimen/fg_register_region_minheight"
             android:spinnerMode="dropdown" />
 
         <TextView
-            android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register_interest" />
@@ -89,7 +86,7 @@
             android:layout_height="wrap_content"
             android:entries="@array/interest"
             android:gravity="center"
-            android:minHeight="48dp"
+            android:minHeight="@dimen/fg_register_interest_minheight"
             android:spinnerMode="dropdown" />
 
         <Button

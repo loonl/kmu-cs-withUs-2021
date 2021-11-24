@@ -2,7 +2,184 @@
     <!-- ************************* App ************************* -->
     <dimen name="app_name_size">40sp</dimen>
 
-    <!-- ************************* Drawer ************************* -->
+
+    <!-- ************************* App Bar ************************* -->
+    <dimen name="appbar_title_textsize">20sp</dimen>
+
+
+    <!-- ************************* Home ************************* -->
+    <dimen name="home_layout_padding">30dp</dimen>
+
+
+    <!-- ************************* Category ************************* -->
+    <dimen name="category_group_marginleft">35dp</dimen>
+    <dimen name="category_group_padding">3dp</dimen>
+    <dimen name="category_group_textsize">20sp</dimen>
+    <dimen name="category_child_marginleft">45dp</dimen>
+    <dimen name="category_child_padding">3dp</dimen>
+    <dimen name="category_child_textsize">20sp</dimen>
+
+    <!-- ************************* Login ************************* -->
+    <dimen name="login_appname_margintop">80dp</dimen>
+    <dimen name="login_appname_textsize">40sp</dimen>
+    <dimen name="login_title_margintop">140dp</dimen>
+    <dimen name="login_title_textsize">24sp</dimen>
+    <dimen name="login_vertical_layout_margintop">180dp</dimen>
+    <dimen name="login_vertical_layout_paddingleft">50dp</dimen>
+    <dimen name="login_vertical_layout_paddingright">50dp</dimen>
+    <dimen name="login_id_margintop">5dp</dimen>
+    <dimen name="login_id_drawablepadding">10dp</dimen>
+    <dimen name="login_id_minheight">48dp</dimen>
+    <dimen name="login_id_textsize">18sp</dimen>
+    <dimen name="login_pw_drawablepadding">10dp</dimen>
+    <dimen name="login_pw_minheight">48dp</dimen>
+    <dimen name="login_pw_textsize">14sp</dimen>
+    <dimen name="login_loginok_margintop">20dp</dimen>
+    <dimen name="login_or_margintop">10dp</dimen>
+    <dimen name="login_phone_margintop">20dp</dimen>
+    <dimen name="login_horizontal_layout_paddingtop">25dp</dimen>
+    <dimen name="login_suggest_singup_textsize">12sp</dimen>
+    <dimen name="login_register_marginstart">5dp</dimen>
+    <dimen name="login_register_textsize">12sp</dimen>
+
+
+    <!-- ************************* Register ************************* -->
+    <dimen name="register_layout_margintop">50dp</dimen>
+    <dimen name="register_layout_marginbottom">370dp</dimen>
+    <dimen name="register_layout_paddingleft">50dp</dimen>
+    <dimen name="register_layout_paddingright">50dp</dimen>
+    <dimen name="register_singup_text_textsize">24sp</dimen>
+    <dimen name="register_id_minheight">48dp</dimen>
+    <dimen name="register_pw_minheight">48dp</dimen>
+    <dimen name="register_continue_margintop">10dp</dimen>
+    <dimen name="register_continue_minheight">48dp</dimen>
+
+    <!-- ************************* Register Fragment ************************* -->
+    <dimen name="fg_register_layout_margintop">250dp</dimen>
+    <dimen name="fg_register_layout_paddingleft">50dp</dimen>
+    <dimen name="fg_register_layout_paddingright">50dp</dimen>
+    <dimen name="fg_register_name_minheight">48dp</dimen>
+    <dimen name="fg_register_name_textsize">16sp</dimen>
+    <dimen name="fg_register_birth_margintop">5dp</dimen>
+    <dimen name="fg_register_birth_minheight">48dp</dimen>
+    <dimen name="fg_register_birth_textsize">16sp</dimen>
+    <dimen name="fg_register_female_width">155dp</dimen>
+    <dimen name="fg_register_male_width">155dp</dimen>
+    <dimen name="fg_register_region_minheight">48dp</dimen>
+    <dimen name="fg_register_interest_minheight">48dp</dimen>
+
+
+    <!-- ************************* User Info Change ************************* -->
+    <dimen name="user_infochange_title_margintop">76dp</dimen>
+    <dimen name="user_infochange_title_textsize">24sp</dimen>
+    <dimen name="user_infochange_layout_margintop">150dp</dimen>
+    <dimen name="user_infochange_layout_paddingleft">50dp</dimen>
+    <dimen name="user_infochange_layout_paddingright">50dp</dimen>
+    <dimen name="user_infochange_pw_minheight">48dp</dimen>
+    <dimen name="user_infochange_pw_textsize">16sp</dimen>
+    <dimen name="user_infochange_name_margintop">10dp</dimen>
+    <dimen name="user_infochange_name_minheight">48dp</dimen>
+    <dimen name="user_infochange_name_textsize">16sp</dimen>
+    <dimen name="user_infochange_birth_margintop">10dp</dimen>
+    <dimen name="user_infochange_birth_minheight">48dp</dimen>
+    <dimen name="user_infochange_birth_textsize">16sp</dimen>
+    <dimen name="user_infochange_gender_margintop">10dp</dimen>
+    <dimen name="user_infochange_female_width">155dp</dimen>
+    <dimen name="user_infochange_male_width">155dp</dimen>
+    <dimen name="user_infochange_region_margintop">10dp</dimen>
+    <dimen name="user_infochange_region_minheight">48dp</dimen>
+    <dimen name="user_infochange_interest_margintop">10dp</dimen>
+    <dimen name="user_infochange_interest_minheight">48dp</dimen>
+    <dimen name="user_infochange_changeok_margintop">30dp</dimen>
+
+    <!-- ************************* User Info ************************* -->
+    <dimen name="user_info_mypage_width">330dp</dimen>
+    <dimen name="user_info_mypage_textsize">16sp</dimen>
+    <dimen name="user_info_layout_marginleft">30dp</dimen>
+    <dimen name="user_info_layout_marginright">30dp</dimen>
+    <dimen name="user_info_profile_width">110dp</dimen>
+    <dimen name="user_info_profile_height">110dp</dimen>
+    <dimen name="user_info_profile_margintop">40dp</dimen>
+    <dimen name="user_info_profile_strokewidth">0dp</dimen>
+    <dimen name="user_info_changeinfo_margintop">50dp</dimen>
+    <dimen name="user_info_changeinfo_textsize">12sp</dimen>
+    <dimen name="user_info_name_marginstart">24dp</dimen>
+    <dimen name="user_info_name_margintop">46dp</dimen>
+    <dimen name="user_info_name_textsize">20sp</dimen>
+    <dimen name="user_info_nim_marginstart">4dp</dimen>
+    <dimen name="user_info_nim_margintop">48dp</dimen>
+    <dimen name="user_info_nim_textsize">16sp</dimen>
+    <dimen name="user_info_birth_marginstart">24dp</dimen>
+    <dimen name="user_info_birth_margintop">12dp</dimen>
+    <dimen name="user_info_scoretext_marginstart">24dp</dimen>
+    <dimen name="user_info_scoretext_margintop">8dp</dimen>
+    <dimen name="user_info_region_marginstart">24dp</dimen>
+    <dimen name="user_info_region_margintop">8dp</dimen>
+    <dimen name="user_info_score_marginstart">8dp</dimen>
+    <dimen name="user_info_score_margintop">8dp</dimen>
+    <dimen name="user_info_jum_marginstart">4dp</dimen>
+    <dimen name="user_info_jum_margintop">8dp</dimen>
+    <dimen name="user_info_notifytext_margintop">31dp</dimen>
+    <dimen name="user_info_switch1_marginstart">8dp</dimen>
+    <dimen name="user_info_switch1_margintop">204dp</dimen>
+    <dimen name="user_info_switch1_minheight">48dp</dimen>
+    <dimen name="user_info_switch1_textsize">12sp</dimen>
+    <dimen name="user_info_switch2_marginstart">8dp</dimen>
+    <dimen name="user_info_switch2_minheight">48dp</dimen>
+    <dimen name="user_info_switch2_textsize">12sp</dimen>
+    <dimen name="user_info_logout_height">48dp</dimen>
+    <dimen name="user_info_logout_margintop">28dp</dimen>
+    <dimen name="user_info_logout_textsize">12sp</dimen>
+    <dimen name="user_info_quit_textsize">12sp</dimen>
+
+
+    <!-- ************************* Club List ************************* -->
+    <dimen name="clublist_recyclerview_height">60dp</dimen>
+    <dimen name="clublist_writepost_elevation">10dp</dimen>
+    <dimen name="clublist_writepost_margin">16dp</dimen>
+
+    <dimen name="clublist_image_width">120dp</dimen>
+    <dimen name="clublist_image_height">120dp</dimen>
+    <dimen name="clublist_image_margin">10dp</dimen>
+    <dimen name="clublist_vertical_layout_height">120dp</dimen>
+    <dimen name="clublist_vertical_layout_margin">10dp</dimen>
+    <dimen name="clublist_title_textsize">24dp</dimen>
+    <dimen name="clublist_const_layout_height">24dp</dimen>
+    <dimen name="clublist_star_width">24dp</dimen>
+    <dimen name="clublist_likes_margin">5dp</dimen>
+    <dimen name="clublist_likes_textsize">14dp</dimen>
+    <dimen name="clublist_person_width">24dp</dimen>
+    <dimen name="clublist_person_height">24dp</dimen>
+    <dimen name="clublist_comments_margin">5dp</dimen>
+    <dimen name="clublist_comments_textsize">14dp</dimen>
+    <dimen name="clublist_content_textsize">16dp</dimen>
+
+    <dimen name="clublist_tag_background_width">120dp</dimen>
+    <dimen name="clublist_tag_background_height">60dp</dimen>
+    <dimen name="clublist_tag_title_width">24dp</dimen>
+    <dimen name="clublist_tag_title_height">24dp</dimen>
+    <dimen name="clublist_tag_title_margintop">18dp</dimen>
+    <dimen name="clublist_tag_title_marginend">5dp</dimen>
+    <dimen name="clublist_tag_name_width">60dp</dimen>
+    <dimen name="clublist_tag_name_height">24dp</dimen>
+    <dimen name="clublist_tag_name_margintop">18dp</dimen>
+    <dimen name="clublist_tag_name_marginend">15dp</dimen>
+
+
+    <!-- ************************* Post Detail ************************* -->
+    <dimen name="postdetail_layout_padding">16dp</dimen>
+    <dimen name="postdetail_title_padding">16dp</dimen>
+    <dimen name="postdetail_commenttext_padding">16dp</dimen>
+    <dimen name="postdetail_commentlayout_padding">8dp</dimen>
+    <dimen name="postdetail_commentinput_padding">8dp</dimen>
+    <dimen name="postdetail_commentok_textsize">13sp</dimen>
+
+
+    <!-- ************************* Comment Reply ************************* -->
+    <dimen name="commentreply_layout_margin">16dp</dimen>
+    <dimen name="commentreply_layout_padding">16dp</dimen>
+    <dimen name="commentreply_reply_padding">8dp</dimen>
+    <dimen name="commentreply_replyok_textsize">13sp</dimen>
 
 
     <!-- ************************* Navigation ************************* -->

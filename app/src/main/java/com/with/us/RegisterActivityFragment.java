@@ -47,9 +47,9 @@ public class RegisterActivityFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
 
-        View register_view = inflater.inflate(R.layout.activity_register_fragment, container, false);
+        View register_view = inflater.inflate(R.layout.fragment_register, container, false);
 
         region_spinner = (Spinner) register_view.findViewById(R.id.activity_register_spn_region);
         interest_spinner = (Spinner) register_view.findViewById(R.id.activity_register_spn_interest);

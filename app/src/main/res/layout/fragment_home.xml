@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="@dimen/home_layout_padding">
 
         <SearchView
             android:id="@+id/sv_main"

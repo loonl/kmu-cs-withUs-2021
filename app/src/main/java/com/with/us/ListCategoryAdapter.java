@@ -31,7 +31,7 @@ public class ListCategoryAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = mInf.inflate(this.groupLayout, parent, false);
         }
-        TextView groupName = (TextView) convertView.findViewById(R.id.list_group);
+        TextView groupName = (TextView) convertView.findViewById(R.id.text_category_group);
         groupName.setText(DataList.get(groupPosition).getGroupName());
         return convertView;
     }
@@ -42,7 +42,7 @@ public class ListCategoryAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = mInf.inflate(this.childLayout, parent, false);
         }
-        TextView childName = (TextView) convertView.findViewById(R.id.list_child);
+        TextView childName = (TextView) convertView.findViewById(R.id.text_category_child);
         childName.setText(DataList.get(groupPosition).getChild().get(childPosition));
         return convertView;
     }

@@ -9,10 +9,10 @@
         android:id="@+id/activity_user_info_change_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="@dimen/user_infochange_title_margintop"
         android:text="@string/user_info_change_text"
         android:textColor="#6C6B6B"
-        android:textSize="24sp"
+        android:textSize="@dimen/user_infochange_title_textsize"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -22,11 +22,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="@dimen/user_infochange_layout_margintop"
         android:gravity="center|top"
         android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
+        android:paddingLeft="@dimen/user_infochange_layout_paddingleft"
+        android:paddingRight="@dimen/user_infochange_layout_paddingright"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
@@ -37,35 +37,34 @@
             android:hint="@string/user_info_change_pw"
             android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:minHeight="48dp"
-            android:textSize="16sp" />
+            android:minHeight="@dimen/user_infochange_pw_minheight"
+            android:textSize="@dimen/user_infochange_pw_textsize" />
 
         <EditText
             android:id="@+id/activity_user_info_change_et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/user_infochange_name_margintop"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:hint="@string/user_info_change_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textSize="16sp" />
+            android:minHeight="@dimen/user_infochange_name_minheight"
+            android:textSize="@dimen/user_infochange_name_textsize" />
 
         <EditText
             android:id="@+id/activity_user_info_change_et_birth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/user_infochange_birth_margintop"
             android:drawableLeft="@drawable/ic_baseline_cake_24"
             android:hint="@string/user_info_change_birth"
             android:importantForAutofill="no"
             android:inputType="date"
-            android:minHeight="48dp"
-            android:textSize="16sp" />
+            android:minHeight="@dimen/user_infochange_birth_minheight"
+            android:textSize="@dimen/user_infochange_birth_textsize" />
 
         <TextView
-            android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/user_info_change_birth_ex" />
@@ -74,21 +73,21 @@
             android:id="@+id/activity_user_info_change_rg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/user_infochange_gender_margintop"
             android:gravity="center"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/activity_user_info_change_rb_woman"
-                android:layout_width="155dp"
+                android:id="@+id/activity_user_info_change_rb_female"
+                android:layout_width="@dimen/user_infochange_female_width"
                 android:layout_height="wrap_content"
-                android:text="@string/register_woman" />
+                android:text="@string/user_info_change_female" />
 
             <RadioButton
-                android:id="@+id/activity_user_info_change_rb_man"
-                android:layout_width="155dp"
+                android:id="@+id/activity_user_info_change_rb_male"
+                android:layout_width="@dimen/user_infochange_male_width"
                 android:layout_height="wrap_content"
-                android:text="@string/register_man" />
+                android:text="@string/user_info_change_male" />
 
         </RadioGroup>
 
@@ -96,27 +95,27 @@
             android:id="@+id/activity_user_info_change_spn_region"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/user_infochange_region_margintop"
             android:entries="@array/region"
             android:gravity="center"
-            android:minHeight="48dp"
+            android:minHeight="@dimen/user_infochange_region_minheight"
             android:spinnerMode="dropdown" />
 
         <Spinner
             android:id="@+id/activity_user_info_change_spn_interest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/user_infochange_interest_margintop"
             android:entries="@array/interest"
             android:gravity="center"
-            android:minHeight="48dp"
+            android:minHeight="@dimen/user_infochange_interest_minheight"
             android:spinnerMode="dropdown" />
 
         <Button
             android:id="@+id/activity_user_info_change_fragment_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/user_infochange_changeok_margintop"
             android:backgroundTint="@color/indigo"
             android:text="@string/user_info_change_done" />
 

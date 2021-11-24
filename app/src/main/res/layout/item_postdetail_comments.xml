@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:background="#eeeeee"
+    android:background="@color/brightgray"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/postdetail_layout_padding">
 
     <LinearLayout
         android:id="@+id/layout_comment_content"

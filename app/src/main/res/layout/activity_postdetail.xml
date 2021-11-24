@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/postdetail_layout_padding">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,26 +18,26 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_postdetail_title"
+                android:id="@+id/activity_postdetail_tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#eeeeee"
-                android:padding="16dp"
-                android:text="제목입니다." />
+                android:background="@color/brightgray"
+                android:padding="@dimen/postdetail_title_padding"
+                android:text="제목입니다." /> <!-- 임시 -->
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#eeeeee"
+                android:background="@color/brightgray"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="@dimen/postdetail_layout_padding">
 
                 <TextView
-                    android:id="@+id/text_postdetail_userid"
+                    android:id="@+id/activity_postdetail_tv_userid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:text="닉네임" />
+                    android:text="닉네임" /> <!-- 임시 -->
 
                 <View
                     android:layout_width="0dp"
@@ -45,15 +45,15 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/text_postdetail_date"
+                    android:id="@+id/activity_postdetail_tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="작성일입니다." />
+                    android:text="작성일입니다." /> <!-- 임시 -->
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_postdetail_content"
+                android:id="@+id/activity_postdetail_layout_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
@@ -61,15 +61,16 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="댓글" />
+                android:padding="@dimen/postdetail_commenttext_padding"
+                android:text="@string/postdetail_comment_title"
+                android:textColor="@color/black" />
 
             <LinearLayout
-                android:id="@+id/layout_comment"
+                android:id="@+id/activity_postdetail_layout_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp" />
+                android:padding="@dimen/postdetail_commentlayout_padding" />
         </LinearLayout>
     </ScrollView>
 
@@ -79,21 +80,21 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_postdetail_comment"
+            android:id="@+id/activity_postdetail_et_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#eeeeee"
-            android:hint="댓글 내용을 입력하세요"
-            android:padding="8dp"
+            android:background="@color/brightgray"
+            android:hint="@string/postdetail_comment_hint"
+            android:padding="@dimen/postdetail_commentinput_padding"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <Button
-            android:id="@+id/btn_postdetail_commentok"
+            android:id="@+id/activity_postdetail_btn_commentok"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="등록"
-            android:textSize="13sp"
+            android:text="@string/postdetail_comment_register"
+            android:textSize="@dimen/postdetail_commentok_textsize"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 </LinearLayout>

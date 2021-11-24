@@ -40,7 +40,7 @@ public class ClubListItemAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.activity_clublist_item, parent, false);
+            convertView = inflater.inflate(R.layout.item_clublist_item, parent, false);
         }
 
         TextView title = convertView.findViewById(R.id.activity_club_list_title);
