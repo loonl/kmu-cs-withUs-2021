@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (user != null) {
             // Initialize idToken
-            FirebaseHelper.setAccessToken(this);
+            FirebaseHelper.setAccessToken(MainActivity.this);
             getUserData();
         }
     }
@@ -211,9 +211,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getUserData();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        if (user != null) {
+//            getUserData();
+//        }
+//    }
 }

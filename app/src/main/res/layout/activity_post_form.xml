@@ -56,6 +56,24 @@
             android:textAlignment="textStart"
             android:textSize="20sp"/>
 
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:paddingTop="12dp"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:visibility="invisible"/>
+
+        <ImageButton
+            android:id="@+id/activity_post_form_image_btn"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/snow"
+            android:src="@drawable/ic_menu_camera"/>
+
+
         <Button
             android:id="@+id/activity_post_form_btn"
             android:layout_width="match_parent"

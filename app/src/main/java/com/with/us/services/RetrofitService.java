@@ -6,12 +6,15 @@ import com.with.us.services.auxiliary.ApiConstants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitService {
 
     public static Retrofit getRetrofit() {
+        Gson gson = new GsonBuilder().setLenient().create();
 
-        return new Retrofit.Builder().baseUrl(ApiConstants.TEST_FIREBASE_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()).build();
+        return new Retrofit.Builder().baseUrl(ApiConstants.FIREBASE_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(ScalarsConverterFactory.create()).build();
     }
 }

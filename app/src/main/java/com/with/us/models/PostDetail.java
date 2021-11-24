@@ -1,5 +1,6 @@
 package com.with.us.models;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -35,7 +36,7 @@ public class PostDetail implements Parcelable {
         content = in.readString();
         comments = in.readInt();
         likes = in.readInt();
-        postImage = in.readString();
+//        postImage = in.readString();
     }
 
     public static final Creator<PostDetail> CREATOR = new Creator<PostDetail>() {
