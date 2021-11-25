@@ -81,7 +81,7 @@
                 android:textColor="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/activity_postdetail_layout_comment"
+                android:id="@+id/activity_postdetail_rv_comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/brightgray" />

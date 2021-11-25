@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
@@ -40,12 +41,12 @@ public class PostDetailActivity extends AppCompatActivity {
 
     private final static String TAG = "PostDetailActivity";
 
-    private TextView ctivity_postdetail_tv_title, activity_postdetail_tv_userid, activity_postdetail_tv_content, activity_postdetail_tv_date;
+    private TextView activity_postdetail_tv_title, activity_postdetail_tv_userid, activity_postdetail_tv_content, activity_postdetail_tv_date;
     private Button activity_postdetail_btn_commentok;
     private EditText activity_postdetail_et_comment;
-    private LinearLayout activity_postdetail_layout_content, activity_postdetail_layout_comment;
+    private LinearLayout activity_postdetail_layout_content;
     private ActivityResultLauncher<Intent> resultLauncher;
-    private RecyclerView rv_comments;
+    private RecyclerView activity_postdetail_rv_comments;
     private ArrayList<ListComments> comments;
     private ListCommentsAdapter adapter_comments;
     private String UID;
@@ -60,20 +61,26 @@ public class PostDetailActivity extends AppCompatActivity {
         UID = intent.getStringExtra("uid");
 
         // 컴포넌트 초기화
-        ctivity_postdetail_tv_title = findViewById(R.id.activity_postdetail_tv_title);
+        activity_postdetail_tv_title = findViewById(R.id.activity_postdetail_tv_title);
         activity_postdetail_tv_userid = findViewById(R.id.activity_postdetail_tv_userid);
         activity_postdetail_tv_date = findViewById(R.id.activity_postdetail_tv_date);
         activity_postdetail_btn_commentok = findViewById(R.id.activity_postdetail_btn_commentok);
         activity_postdetail_et_comment = findViewById(R.id.activity_postdetail_et_comment);
-        activity_postdetail_layout_content = findViewById(R.id.activity_postdetail_layout_content);
+        activity_postdetail_layout_content = findViewById(R.id.activity_postdetail_layout_content); // 동적으로 뷰 추가해줄 게시글 layout인데 필요없으면 지우셔도 됩니다.
         activity_postdetail_tv_content = findViewById(R.id.activity_postdetail_tv_content);
-//        activity_postdetail_layout_comment = findViewById(R.id.activity_postdetail_layout_comment);
         activity_postdetail_iv = findViewById(R.id.activity_postdetail_iv);
+        activity_postdetail_rv_comments = findViewById(R.id.activity_postdetail_rv_comments);
 
         LayoutInflater layoutInflater = LayoutInflater.from(PostDetailActivity.this);
 
+        // 댓글 리스트에 쓸 ArrayList와 Adapter 준비
         comments = new ArrayList<ListComments>();
         adapter_comments = new ListCommentsAdapter(comments);
+
+        // recyclerView와 Adapter 연결
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        activity_postdetail_rv_comments.setLayoutManager(manager); // connect LayoutManager
+        activity_postdetail_rv_comments.setAdapter(adapter_comments); // connect adapter
 
 //        getPostDetailInformation();
 
@@ -85,7 +92,7 @@ public class PostDetailActivity extends AppCompatActivity {
                 // array에 넣어주고 데이터 새로고침
                 comments.add(new ListComments(text, "test_nickname", "2021.11.23 23:43", 0));
                 adapter_comments.notifyDataSetChanged();
-                
+
                 // 키보드 없애고, getText 지워주기
                 activity_postdetail_et_comment.getText().clear();
                 InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -154,5 +161,4 @@ public class PostDetailActivity extends AppCompatActivity {
 //
 //                });
 //        activity_postdetail_layout_content.addView(activity_postdetail_tv_content);
-    }
 }
