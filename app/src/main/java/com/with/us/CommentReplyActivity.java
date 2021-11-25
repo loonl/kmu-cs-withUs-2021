@@ -13,9 +13,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CommentReplyActivity extends AppCompatActivity {
-    private TextView text_userid, text_date, text_content;
-    private Button btn_replyok;
-    private EditText et_reply;
+    private TextView activity_commentreply_tv_userid, activity_commentreply_tv_date,
+            activity_commentreply_tv_content;
+
+    private Button activity_commentreply_btn_replyok;
+    private EditText activity_commentreply_et_reply;
     private String userid, date, content;
 
     @Override
@@ -24,12 +26,13 @@ public class CommentReplyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_commentreply);
 
         // 컴포넌트 초기화
-        text_userid = findViewById(R.id.text_commentreply_userid);
-        text_date = findViewById(R.id.text_commentreply_date);
-        text_content = findViewById(R.id.text_commentreply_content);
+        activity_commentreply_tv_userid = findViewById(R.id.activity_commentreply_tv_userid);
+        activity_commentreply_tv_date = findViewById(R.id.activity_commentreply_tv_date);
+        activity_commentreply_tv_content = findViewById(R.id.activity_commentreply_tv_content);
 
-        btn_replyok = findViewById(R.id.btn_commentreply_replyok);
-        et_reply = findViewById(R.id.et_commentreply_reply);
+        activity_commentreply_btn_replyok = findViewById(R.id.activity_commentreply_btn_replyok);
+
+        activity_commentreply_et_reply = findViewById(R.id.activity_commentreply_et_reply);
 
         // 값 받아온거 할당
         Intent inIntent = getIntent();
@@ -37,15 +40,15 @@ public class CommentReplyActivity extends AppCompatActivity {
         date = inIntent.getStringExtra("date");
         content = inIntent.getStringExtra("content");
 
-        text_userid.setText(userid);
-        text_date.setText(date);
-        text_content.setText(content);
+        activity_commentreply_tv_userid.setText(userid);
+        activity_commentreply_tv_date.setText(date);
+        activity_commentreply_tv_content.setText(content);
 
         // 답글 버튼 눌렀을 때 다시 PostDetail 쪽으로 보내주기
-        btn_replyok.setOnClickListener(new View.OnClickListener() {
+        activity_commentreply_btn_replyok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text = et_reply.getText().toString();
+                String text = activity_commentreply_et_reply.getText().toString();
                 Intent outIntent = new Intent(getApplicationContext(), PostDetailActivity.class);
                 outIntent.putExtra("content", text);
                 setResult(RESULT_OK, outIntent);

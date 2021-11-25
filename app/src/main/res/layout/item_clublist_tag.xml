@@ -6,28 +6,28 @@
 
     <ImageView
         android:id="@+id/tag_background"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/clublist_tag_background_width"
+        android:layout_height="@dimen/clublist_tag_background_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/editbox_background_normal" />
 
     <ImageView
         android:id="@+id/tag_title"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="5dp"
+        android:layout_width="@dimen/clublist_tag_title_width"
+        android:layout_height="@dimen/clublist_tag_title_height"
+        android:layout_marginTop="@dimen/clublist_tag_title_margintop"
+        android:layout_marginEnd="@dimen/clublist_tag_title_marginend"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toStartOf="@+id/tag_name"
         app:layout_constraintTop_toTopOf="@+id/tag_background" />
 
     <TextView
         android:id="@+id/tag_name"
-        android:layout_width="60dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="15dp"
+        android:layout_width="@dimen/clublist_tag_name_width"
+        android:layout_height="@dimen/clublist_tag_name_height"
+        android:layout_marginTop="@dimen/clublist_tag_name_margintop"
+        android:layout_marginEnd="@dimen/clublist_tag_name_marginend"
         android:text="text"
         app:layout_constraintEnd_toEndOf="@+id/tag_background"
         app:layout_constraintTop_toTopOf="@+id/tag_background" />

@@ -10,10 +10,10 @@
         android:id="@+id/activity_login_tv_appname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="@dimen/login_appname_margintop"
         android:text="@string/app_name"
         android:textColor="@color/indigo"
-        android:textSize="40sp"
+        android:textSize="@dimen/login_appname_textsize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,10 +22,10 @@
         android:id="@+id/activity_login_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="@dimen/login_title_margintop"
         android:text="@string/login_text"
         android:textColor="#6C6B6B"
-        android:textSize="24sp"
+        android:textSize="@dimen/login_title_textsize"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -35,10 +35,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="@dimen/login_vertical_layout_margintop"
         android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
+        android:paddingLeft="@dimen/login_vertical_layout_paddingleft"
+        android:paddingRight="@dimen/login_vertical_layout_paddingright"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -49,52 +49,51 @@
             android:id="@+id/activity_login_et_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/login_id_margintop"
             android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/login_id_drawablepadding"
             android:hint="@string/login_id"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:minHeight="48dp"
-            android:textSize="14sp" />
+            android:minHeight="@dimen/login_id_minheight"
+            android:textSize="@dimen/login_id_textsize" />
 
         <EditText
             android:id="@+id/activity_login_et_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_lock_24"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/login_pw_drawablepadding"
             android:hint="@string/login_password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:minHeight="48dp"
-            android:textSize="14sp" />
+            android:minHeight="@dimen/login_pw_minheight"
+            android:textSize="@dimen/login_pw_textsize" />
 
         <Button
             android:id="@+id/activity_login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/login_loginok_margintop"
             android:backgroundTint="@color/indigo"
             android:drawableTint="@color/snow"
             android:text="@string/login_button"
             android:textColor="@color/white" />
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/login_or_margintop"
             android:gravity="center"
             android:text="@string/login_or"
             android:textColor="#B6B6B6"
             tools:ignore="TextContrastCheck" />
 
         <Button
-            android:id="@+id/activity_login_btn_p"
+            android:id="@+id/activity_login_btn_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/login_phone_margintop"
             android:backgroundTint="@color/darkmagenta"
             android:drawableLeft="@drawable/ic_baseline_call_24"
             android:drawableTint="@color/white"
@@ -111,7 +110,7 @@
             android:text="@string/login_facebook" />
 
         <Button
-            android:id="@+id/activity_login_btn_t"
+            android:id="@+id/activity_login_btn_twitter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#2196F3"
@@ -120,7 +119,7 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/activity_login_btn_g"
+            android:id="@+id/activity_login_btn_google"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#DFE4DF"
@@ -132,23 +131,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center|top"
-            android:paddingTop="25dp">
+            android:paddingTop="@dimen/login_horizontal_layout_paddingtop">
 
             <TextView
-                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/register_description"
-                android:textSize="12sp" />
+                android:textSize="@dimen/login_suggest_singup_textsize" />
 
             <TextView
                 android:id="@+id/activity_login_tv_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="@dimen/login_register_marginstart"
                 android:text="@string/register_text"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="@dimen/login_register_textsize"
                 android:textStyle="bold" />
         </LinearLayout>
 

@@ -7,15 +7,15 @@
 
     <ImageView
         android:id="@+id/list_title_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_margin="10dp"
+        android:layout_width="@dimen/clublist_image_width"
+        android:layout_height="@dimen/clublist_image_height"
+        android:layout_margin="@dimen/clublist_image_margin"
         android:src="@mipmap/ic_launcher" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_margin="10dp"
+        android:layout_height="@dimen/clublist_vertical_layout_height"
+        android:layout_margin="@dimen/clublist_vertical_layout_margin"
         android:orientation="vertical">
 
         <TextView
@@ -23,16 +23,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textSize="24dp" />
+            android:textSize="@dimen/clublist_title_textsize" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="24dp"
+            android:layout_height="@dimen/clublist_const_layout_height"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/activity_club_list_star"
-                android:layout_width="24dp"
+                android:layout_width="@dimen/clublist_star_width"
                 android:layout_height="match_parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -42,17 +42,17 @@
                 android:id="@+id/activity_club_list_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="@dimen/clublist_likes_margin"
+                android:layout_marginTop="@dimen/clublist_likes_margin"
                 android:text="Score"
-                android:textSize="14dp"
+                android:textSize="@dimen/clublist_likes_textsize"
                 app:layout_constraintStart_toEndOf="@+id/activity_club_list_star"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/activity_club_list_person"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/clublist_person_width"
+                android:layout_height="@dimen/clublist_person_height"
                 android:layout_weight="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/activity_club_list_comments"
@@ -63,9 +63,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/clublist_comments_margin"
                 android:text="Number"
-                android:textSize="14dp"
+                android:textSize="@dimen/clublist_comments_textsize"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Description"
-            android:textSize="16dp" />
+            android:textSize="@dimen/clublist_content_textsize" />
 
     </LinearLayout>
 

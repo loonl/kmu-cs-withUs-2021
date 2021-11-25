@@ -7,24 +7,22 @@
     tools:context=".RegisterActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="370dp"
+        android:layout_marginTop="@dimen/register_layout_margintop"
+        android:layout_marginBottom="@dimen/register_layout_marginbottom"
         android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
+        android:paddingLeft="@dimen/register_layout_paddingleft"
+        android:paddingRight="@dimen/register_layout_paddingright"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/register_text"
-            android:textSize="24sp"
+            android:textSize="@dimen/register_singup_text_textsize"
             android:textStyle="bold" />
 
         <EditText
@@ -35,7 +33,7 @@
             android:hint="@string/login_id"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="@dimen/register_id_minheight" />
 
         <EditText
             android:id="@+id/activity_register_et_pw"
@@ -45,14 +43,14 @@
             android:hint="@string/login_password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:minHeight="@dimen/register_pw_minheight" />
 
         <Button
             android:id="@+id/activity_register_btn_continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:minHeight="48dp"
+            android:layout_marginTop="@dimen/register_continue_margintop"
+            android:minHeight="@dimen/register_continue_minheight"
             android:text="@string/register_continue"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
