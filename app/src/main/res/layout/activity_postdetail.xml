@@ -65,12 +65,12 @@
                 android:text="@string/postdetail_comment_title"
                 android:textColor="@color/black" />
 
-            <LinearLayout
-                android:id="@+id/activity_postdetail_layout_comment"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_postdetail_rv_comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/postdetail_commentlayout_padding" />
+                android:background="@color/brightgray" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -29,6 +30,9 @@ public class PostDetailActivity extends AppCompatActivity {
     private EditText activity_postdetail_et_comment;
     private LinearLayout activity_postdetail_layout_content, activity_postdetail_layout_comment;
     private ActivityResultLauncher<Intent> resultLauncher;
+    private RecyclerView rv_comments;
+    private ArrayList<ListComments> comments;
+    private ListCommentsAdapter adapter_comments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,9 @@ public class PostDetailActivity extends AppCompatActivity {
 
         LayoutInflater layoutInflater = LayoutInflater.from(PostDetailActivity.this);
 
+        comments = new ArrayList<ListComments>();
+        adapter_comments = new ListCommentsAdapter(comments);
+
         // 게시글 내용 레이아웃에 넣어주는 부분
         // imageView의 경우
         ImageView iv = new ImageView(this);
@@ -68,55 +75,53 @@ public class PostDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // 동적으로 뷰를 만들어서 Comment Layout에 넣어준다.
-                // Comment Layout에 넣어줄 View 임시생성
-                View tempView = layoutInflater.inflate(R.layout.item_postdetail_comments, null);
-
-                // 넣어줄 View 안에 내용 설정 <= 서버에서 받아오시려면 이 부분 수정하시면 될 듯 합니다.
+                // text 받아오기
                 String text = activity_postdetail_et_comment.getText().toString();
-                ((TextView) tempView.findViewById(R.id.text_comment_userid)).setText("테스트닉네임");
-                ((TextView) tempView.findViewById(R.id.text_comment_content)).setText(text);
-                ((TextView) tempView.findViewById(R.id.text_comment_date)).setText("2021.11.23 23:43");
 
-                // comment Layout 에 넣어주기
-                activity_postdetail_layout_comment.addView(tempView);
+                // array에 넣어주고 데이터 새로고침
+                comments.add(new ListComments(text, "test_nickname", "2021.11.23 23:43", 0));
+                adapter_comments.notifyDataSetChanged();
 
                 // 키보드 없애고, getText 지워주기
                 activity_postdetail_et_comment.getText().clear();
                 InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-
-                // 댓글 내용의 textView를 눌렀을 때 답글을 달 수 있게 해준다.
-                tempView.findViewById(R.id.text_comment_content).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 답글 입력 화면인 CommentReplyActivity로 보낸다.
-                        Intent intent = new Intent(getApplicationContext(), CommentReplyActivity.class);
-                        intent.putExtra("userid", "테스트닉네임");
-                        intent.putExtra("content", text);
-                        intent.putExtra("date", "2021.11.23 23:43");
-                        resultLauncher.launch(intent);
-                    }
-                }); // end tempView setOnClicker
             }
-        }); // end btn_commentok setOnClicker
+        });
 
-        // CommentReplyActivity로부터 답글 받아왔을 때 처리하는 부분
-        resultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) { // 답글 받아왔을 때 처리하는 부분
-                        if (result.getResultCode() == RESULT_OK) {
-                            Intent intent = result.getData();
-                            String text = intent.getStringExtra("content");
-                            View tempView = layoutInflater.inflate(R.layout.item_postdetail_comments, null);
-                            ((TextView) tempView.findViewById(R.id.text_comment_userid)).setText("테스트닉네임");
-                            ((TextView) tempView.findViewById(R.id.text_comment_content)).setText(text);
-                            ((TextView) tempView.findViewById(R.id.text_comment_date)).setText("2021.11.23 23:43");
-                            activity_postdetail_layout_comment.addView(tempView);
-                        }
-                    }
-                }); // end resultLauncher
+        // TODO : 답글 기능(index 구분해서 답글 달 수 있게 구현 필요)
+
+        /**        // 댓글 내용의 textView를 눌렀을 때 답글을 달 수 있게 해준다.
+         tempView.findViewById(R.id.text_comment_content).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        // 답글 입력 화면인 CommentReplyActivity로 보낸다.
+        Intent intent = new Intent(getApplicationContext(), CommentReplyActivity.class);
+        intent.putExtra("userid", "테스트닉네임");
+        intent.putExtra("content", text);
+        intent.putExtra("date", "2021.11.23 23:43");
+        resultLauncher.launch(intent);
+        }
+        }); // end tempView setOnClicker
+         }
+         }); // end btn_commentok setOnClicker
+
+         // CommentReplyActivity로부터 답글 받아왔을 때 처리하는 부분
+         resultLauncher = registerForActivityResult(
+         new ActivityResultContracts.StartActivityForResult(),
+         new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) { // 답글 받아왔을 때 처리하는 부분
+        if (result.getResultCode() == RESULT_OK) {
+        Intent intent = result.getData();
+        String text = intent.getStringExtra("content");
+        View tempView = layoutInflater.inflate(R.layout.item_postdetail_comments, null);
+        ((TextView) tempView.findViewById(R.id.text_comment_userid)).setText("테스트닉네임");
+        ((TextView) tempView.findViewById(R.id.text_comment_content)).setText(text);
+        ((TextView) tempView.findViewById(R.id.text_comment_date)).setText("2021.11.23 23:43");
+        layout_comment.addView(tempView);
+        }
+        }
+        }); // end resultLauncher */
     } // end onCreate
 }
