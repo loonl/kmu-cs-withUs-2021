@@ -56,7 +56,22 @@
                 android:id="@+id/activity_postdetail_layout_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/activity_postdetail_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/activity_postdetail_tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:text="@string/postdetail_content" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,7 +81,7 @@
                 android:textColor="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/activity_postdetail_rv_comments"
+                android:id="@+id/activity_postdetail_layout_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/brightgray" />

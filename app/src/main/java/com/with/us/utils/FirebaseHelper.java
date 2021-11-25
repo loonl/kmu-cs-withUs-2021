@@ -40,8 +40,11 @@ public class FirebaseHelper {
 
     public static String getAccessToken(Context context) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        SharedPreferences preferences = context.getSharedPreferences(user.getEmail(), 0);
-        return preferences.getString("token", "");
+        if (user != null) {
+            SharedPreferences preferences = context.getSharedPreferences(user.getEmail(), 0);
+            return preferences.getString("token", "");
+        }
+        return "Anonymous";
     }
 
 }

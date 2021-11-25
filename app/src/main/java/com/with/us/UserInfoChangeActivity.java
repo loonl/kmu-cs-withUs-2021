@@ -44,32 +44,39 @@ public class UserInfoChangeActivity extends AppCompatActivity {
         activity_user_info_change_fragment_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(UserInfoChangeActivity.this).setTitle("회원정보 변경").setMessage("회원정보를 수정하시겠습니까?").setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        String password = activity_user_info_change_et_pw.getText().toString();
-                        String displayName = activity_user_info_change_et_name.getText().toString();
-                        int birthDate = Integer.parseInt(activity_user_info_change_et_birth.getText().toString());
-                        String region = String.valueOf(activity_user_info_change_spn_region.getSelectedItem());
-                        String interest = String.valueOf(activity_user_info_change_spn_interest.getSelectedItem());
+                new AlertDialog.Builder(UserInfoChangeActivity.this).setTitle("회원정보 변경").setMessage("회원정보를 수정하시겠습니까?")
+                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String password = activity_user_info_change_et_pw.getText().toString();
+                                String displayName = activity_user_info_change_et_name.getText().toString();
+                                int birthDate = Integer
+                                        .parseInt(activity_user_info_change_et_birth.getText().toString());
+                                String region = String.valueOf(activity_user_info_change_spn_region.getSelectedItem());
+                                String interest = String
+                                        .valueOf(activity_user_info_change_spn_interest.getSelectedItem());
 
-                        UserInfo userInfo = new UserInfo(displayName, birthDate, "", region, interest);
-                        RequestHelper.getUserAPI().modifyUserInfo("Bearer " + FirebaseHelper.getAccessToken(UserInfoChangeActivity.this), userInfo).enqueue(new Callback<UserInfo>() {
-                            @Override
-                            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-                                Toast.makeText(UserInfoChangeActivity.this, "회원정보를 변경하였습니다.", Toast.LENGTH_SHORT).show();
-                                finish();
+                                UserInfo userInfo = new UserInfo(displayName, birthDate, "", region, interest);
+                                RequestHelper.getUserAPI()
+                                        .modifyUserInfo(
+                                                "Bearer " + FirebaseHelper.getAccessToken(UserInfoChangeActivity.this),
+                                                userInfo)
+                                        .enqueue(new Callback<UserInfo>() {
+                                            @Override
+                                            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
+                                                Toast.makeText(UserInfoChangeActivity.this, "회원정보를 변경하였습니다.",
+                                                        Toast.LENGTH_SHORT).show();
+                                                finish();
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<UserInfo> call, Throwable t) {
+
+                                            }
+                                        });
                             }
-
-                            @Override
-                            public void onFailure(Call<UserInfo> call, Throwable t) {
-
-                            }
-                        });
-                    }
-                }).setNegativeButton(android.R.string.cancel, null).setIcon(android.R.drawable.ic_dialog_info).show();
+                        }).setNegativeButton("취소", null).setIcon(android.R.drawable.ic_dialog_info).show();
             }
         });
-
 
     }
 }

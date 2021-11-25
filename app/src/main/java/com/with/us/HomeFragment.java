@@ -1,11 +1,10 @@
-package com.with.us.ui.home;
+package com.with.us;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import android.widget.ListView;
 import android.widget.SearchView;
