@@ -75,7 +75,8 @@ public class PostFormActivity extends AppCompatActivity {
                         ref.putFile(uri).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                                double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
+                                double progress = (100.0 * snapshot.getBytesTransferred())
+                                        / snapshot.getTotalByteCount();
                                 ProgressBar progressBar = findViewById(R.id.progressbar);
                                 progressBar.setVisibility(View.VISIBLE);
                                 progressBar.setProgress((int) progress);

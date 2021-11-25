@@ -24,8 +24,7 @@ import java.util.ArrayList;
 
 public class PostDetailActivity extends AppCompatActivity {
 
-    private TextView ctivity_postdetail_tv_title, activity_postdetail_tv_userid,
-            activity_postdetail_tv_date;
+    private TextView ctivity_postdetail_tv_title, activity_postdetail_tv_userid, activity_postdetail_tv_date;
     private Button activity_postdetail_btn_commentok;
     private EditText activity_postdetail_et_comment;
     private LinearLayout activity_postdetail_layout_content, activity_postdetail_layout_comment;
@@ -49,7 +48,7 @@ public class PostDetailActivity extends AppCompatActivity {
         activity_postdetail_et_comment = findViewById(R.id.activity_postdetail_et_comment);
 
         activity_postdetail_layout_content = findViewById(R.id.activity_postdetail_layout_content);
-        activity_postdetail_layout_comment = findViewById(R.id.activity_postdetail_layout_comment);
+        activity_postdetail_layout_comment = findViewById(R.id.activity_postdetail_rv_comments);
 
         LayoutInflater layoutInflater = LayoutInflater.from(PostDetailActivity.this);
 
@@ -59,13 +58,15 @@ public class PostDetailActivity extends AppCompatActivity {
         // 게시글 내용 레이아웃에 넣어주는 부분
         // imageView의 경우
         ImageView iv = new ImageView(this);
-        iv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        iv.setLayoutParams(
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         iv.setImageResource(R.drawable.ic_launcher_foreground);
         activity_postdetail_layout_content.addView(iv);
 
         // textView의 경우
         TextView tv = new TextView(this);
-        tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        tv.setLayoutParams(
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         tv.setText("hello world!");
         tv.setTextSize(13);
         activity_postdetail_layout_content.addView(tv);
@@ -91,37 +92,35 @@ public class PostDetailActivity extends AppCompatActivity {
 
         // TODO : 답글 기능(index 구분해서 답글 달 수 있게 구현 필요)
 
-        /**        // 댓글 내용의 textView를 눌렀을 때 답글을 달 수 있게 해준다.
-         tempView.findViewById(R.id.text_comment_content).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-        // 답글 입력 화면인 CommentReplyActivity로 보낸다.
-        Intent intent = new Intent(getApplicationContext(), CommentReplyActivity.class);
-        intent.putExtra("userid", "테스트닉네임");
-        intent.putExtra("content", text);
-        intent.putExtra("date", "2021.11.23 23:43");
-        resultLauncher.launch(intent);
-        }
-        }); // end tempView setOnClicker
-         }
-         }); // end btn_commentok setOnClicker
-
-         // CommentReplyActivity로부터 답글 받아왔을 때 처리하는 부분
-         resultLauncher = registerForActivityResult(
-         new ActivityResultContracts.StartActivityForResult(),
-         new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) { // 답글 받아왔을 때 처리하는 부분
-        if (result.getResultCode() == RESULT_OK) {
-        Intent intent = result.getData();
-        String text = intent.getStringExtra("content");
-        View tempView = layoutInflater.inflate(R.layout.item_postdetail_comments, null);
-        ((TextView) tempView.findViewById(R.id.text_comment_userid)).setText("테스트닉네임");
-        ((TextView) tempView.findViewById(R.id.text_comment_content)).setText(text);
-        ((TextView) tempView.findViewById(R.id.text_comment_date)).setText("2021.11.23 23:43");
-        layout_comment.addView(tempView);
-        }
-        }
-        }); // end resultLauncher */
+        /**
+         * // 댓글 내용의 textView를 눌렀을 때 답글을 달 수 있게 해준다.
+         * tempView.findViewById(R.id.text_comment_content).setOnClickListener(new
+         * View.OnClickListener() {
+         * 
+         * @Override public void onClick(View v) { // 답글 입력 화면인 CommentReplyActivity로
+         *           보낸다. Intent intent = new Intent(getApplicationContext(),
+         *           CommentReplyActivity.class); intent.putExtra("userid", "테스트닉네임");
+         *           intent.putExtra("content", text); intent.putExtra("date",
+         *           "2021.11.23 23:43"); resultLauncher.launch(intent); } }); // end
+         *           tempView setOnClicker } }); // end btn_commentok setOnClicker
+         * 
+         *           // CommentReplyActivity로부터 답글 받아왔을 때 처리하는 부분 resultLauncher =
+         *           registerForActivityResult( new
+         *           ActivityResultContracts.StartActivityForResult(), new
+         *           ActivityResultCallback<ActivityResult>() {
+         * @Override public void onActivityResult(ActivityResult result) { // 답글 받아왔을 때
+         *           처리하는 부분 if (result.getResultCode() == RESULT_OK) { Intent intent =
+         *           result.getData(); String text = intent.getStringExtra("content");
+         *           View tempView =
+         *           layoutInflater.inflate(R.layout.item_postdetail_comments, null);
+         *           ((TextView)
+         *           tempView.findViewById(R.id.text_comment_userid)).setText("테스트닉네임");
+         *           ((TextView)
+         *           tempView.findViewById(R.id.text_comment_content)).setText(text);
+         *           ((TextView)
+         *           tempView.findViewById(R.id.text_comment_date)).setText("2021.11.23
+         *           23:43"); layout_comment.addView(tempView); } } }); // end
+         *           resultLauncher
+         */
     } // end onCreate
 }

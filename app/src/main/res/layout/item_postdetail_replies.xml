@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="userid" <!-- 임시 -->
+                android:text="userid"
                 android:textStyle="bold" />
 
             <TextView
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="time" <!-- 임시 -->
+                android:text="time"
                 android:textColor="#616161" />
 
         </LinearLayout>

@@ -49,6 +49,8 @@
         <activity
             android:name=".PostDetailActivity"
             android:exported="true" />
+        <service android:name=".utils.ServiceHandler"
+            android:stopWithTask="false" />
     </application>
 
 </manifest>

@@ -33,6 +33,9 @@ export const getPost = async (req: Request, res: Response): Promise<void> => {
  */
 export const createPost = async (req: Request, res: Response): Promise<void> => {
   try {
+    if (res.locals.isAnonymous) {
+      res.send({ success: false })
+    }
     const { author, category, displayName, title, content, postImage } = req.body
     if (!author && !category && !displayName && !title && !content) {
       console.log("No payload from user")
