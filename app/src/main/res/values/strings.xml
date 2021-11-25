@@ -93,6 +93,9 @@
     <string name="postdetail_comment_hint">댓글 내용을 입력하세요.</string>
     <string name="postdetail_comment_register">등록</string>
     <string name="postdetail_content">게시글 내용이 존재하지 않습니다.</string>
+    <string name="postdetail_comment_delete">삭제</string>
+    <string name="postdetail_comment_reply">답글</string>
+    <string name="postdetail_commentreply_delete">삭제</string>
 
     <!-- ************************* Comment Reply ************************* -->
     <string name="commentreply_comment_hint">답글 내용을 입력하세요.</string>

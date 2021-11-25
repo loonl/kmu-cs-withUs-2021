@@ -29,6 +29,24 @@
             android:text="time"
             android:textColor="#616161" />
 
+        <TextView
+            android:id="@+id/text_comment_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="@dimen/postdetail_comment_delete_paddingleft"
+            android:text="@string/postdetail_comment_delete"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/text_comment_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="@dimen/postdetail_comment_reply_paddingleft"
+            android:text="@string/postdetail_comment_reply"
+            android:textColor="@color/black" />
+
     </LinearLayout>
 
     <TextView

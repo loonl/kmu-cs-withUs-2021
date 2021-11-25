@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="└"
+        android:text="⤷"
         android:textSize="@dimen/postdetail_commentreply_symbol_textsize" />
 
     <LinearLayout
@@ -40,6 +40,15 @@
                 android:gravity="right"
                 android:text="time"
                 android:textColor="#616161" />
+
+            <TextView
+                android:id="@+id/text_commentreply_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingLeft="@dimen/postdetail_commentreply_delete_paddingleft"
+                android:text="@string/postdetail_commentreply_delete"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
