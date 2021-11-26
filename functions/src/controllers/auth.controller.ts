@@ -97,7 +97,7 @@ export const modifyUser = async (req: Request, res: Response): Promise<void> => 
 
 /**
  * Delete user account & data
- * @route POST /user/delete
+ * @route GET /user/delete
  */
 export const deleteUser = async (req: Request, res: Response): Promise<void> => {
   try {

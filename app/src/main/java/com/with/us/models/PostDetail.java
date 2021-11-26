@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PostDetail implements Parcelable {
     public String uid;
@@ -39,7 +40,7 @@ public class PostDetail implements Parcelable {
         content = in.readString();
         comments = in.readInt();
         likes = in.readInt();
-//        postImage = in.readString();
+        postImage = in.readString();
     }
 
     public static final Creator<PostDetail> CREATOR = new Creator<PostDetail>() {

@@ -12,15 +12,15 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface CommentService {
-    @GET("post/get")
+    @GET("comment/get")
     Call<List<Comment>> getComment(@Header("Authorization") String auth);
 
-    @POST("post/create")
+    @POST("comment/create")
     Call<List<Comment>> createComment(@Header("Authorization") String auth, @Body Comment comment);
 
-    @POST("post/modify")
+    @POST("comment/modify")
     Call<List<Comment>> modifyComment(@Header("Authorization") String auth, @Body Comment comment);
 
-    @GET("post/delete")
+    @GET("comment/delete")
     Call<List<Comment>> deleteComment(@Header("Authorization") String auth);
 }

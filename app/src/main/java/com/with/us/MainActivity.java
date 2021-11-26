@@ -1,5 +1,7 @@
 package com.with.us;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -11,8 +13,11 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
@@ -24,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.with.us.databinding.ActivityMainBinding;
 import com.with.us.models.UserInfo;
 import com.with.us.services.auxiliary.RequestHelper;
@@ -31,6 +37,7 @@ import com.with.us.utils.FirebaseHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,20 +51,19 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ActionBar actionBar;
     private ExpandableListView listView;
-    FirebaseAuth mAuth;
-    FirebaseUser user;
-    DrawerLayout drawer;
-    NavigationView navigationView;
-    ListCategoryAdapter listCategoryAdapter;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private ListCategoryAdapter listCategoryAdapter;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        mAuth = FirebaseAuth.getInstance();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        user = mAuth.getCurrentUser();
 
         // Make custom title & centered
         invalidateOptionsMenu();
@@ -73,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
 
         // Set List Category
         ArrayList<ListCategory> dataList = new ArrayList<ListCategory>();
@@ -81,16 +89,11 @@ public class MainActivity extends AppCompatActivity {
         makeListCategory(dataList, "관심사", R.array.interest);
         setListCategory(dataList);
 
-        if (user != null) {
-            // Initialize idToken
-            FirebaseHelper.setAccessToken(MainActivity.this);
-            getUserData();
-        }
+        getUserData();
     }
 
     private void setListCategory(ArrayList<ListCategory> dataList) {
-        listCategoryAdapter = new ListCategoryAdapter(getApplicationContext(), R.layout.item_main_group,
-                R.layout.item_main_child, dataList);
+        listCategoryAdapter = new ListCategoryAdapter(getApplicationContext(), R.layout.item_main_group, R.layout.item_main_child, dataList);
         listView.setAdapter(listCategoryAdapter);
     }
 
@@ -135,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getUserData() {
+        if (user == null) {
+            return;
+        }
         TextView userName = findViewById(R.id.nav_header_title);
 
         RequestHelper.getUserAPI().getUserInfo("Bearer " + FirebaseHelper.getAccessToken(this))
@@ -189,8 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition,
-                    long id) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 String category = (String) listCategoryAdapter.getChild(groupPosition, childPosition);
                 Intent intent = new Intent(MainActivity.this, ClubListActivity.class);
                 intent.putExtra("category", category);
@@ -211,11 +216,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        if (user != null) {
-//            getUserData();
-//        }
-//    }
+    //    @Override
+    //    protected void onResume() {
+    //        super.onResume();
+    //        if (user != null) {
+    //            getUserData();
+    //        }
+    //    }
 }

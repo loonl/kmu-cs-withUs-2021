@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -57,7 +57,7 @@ public class ClubListItemAdapter extends BaseAdapter {
         content.setText(listItem.getContent());
         likes.setText(String.valueOf(listItem.getLikes()));
         comments.setText(String.valueOf(listItem.getComments()));
-        Picasso.get().load(Uri.parse(listItem.getPostImage())).fit().networkPolicy(NetworkPolicy.OFFLINE).into(imageView);
+        Glide.with(context).load(listItem.getPostImage()).centerCrop().placeholder(R.drawable.no_image).into(imageView);
 
         return convertView;
     }

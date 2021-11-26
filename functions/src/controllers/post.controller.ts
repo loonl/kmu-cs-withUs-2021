@@ -12,7 +12,7 @@ export const getPost = async (req: Request, res: Response): Promise<void> => {
     const snapshot = await db
       .collection("Post")
       .where("category", "==", category)
-      // .orderBy("createdAt", "desc")
+      .orderBy("createdAt", "desc")
       .get()
     const result = snapshot.docs.map((doc) => ({
       id: doc.id,
@@ -26,23 +26,20 @@ export const getPost = async (req: Request, res: Response): Promise<void> => {
 }
 
 
-interface Payload {
-  postUid: string
-}
-
 /**
  * Get post detail data
  * @route GET /post/detail
  */
 export const getPostDetail = async (req: Request, res: Response): Promise<void> => {
   try {
-    const param: Payload = Object(req.query)
-    const { postUid } = param
-
-    if (!postUid) {
-      const postData = (await db.collection("Post").doc(postUid).get()).data()
-      console.log(postData)
-      res.json(postData)
+    const uid = Object(req.query)
+    const { postUid } = uid
+    if (postUid) {
+      const doc = await db.collection("Post").doc(postUid).get()
+      console.log(doc.data())
+      res.json(doc.data())
+    } else {
+      throw Error("Cannot get post data")
     }
   } catch (error) {
     console.log("Error on getting post", error)
@@ -74,6 +71,7 @@ export const createPost = async (req: Request, res: Response): Promise<void> => 
       likes: 0,
       comments: 0,
       postImage: postImage,
+      createdAt: new Date,
     })
     await db.collection("Post").doc(ref.id).update({
       uid: ref.id,
@@ -100,7 +98,7 @@ export const modifyPost = async (req: Request, res: Response): Promise<void> => 
 
 /**
  * Delete a post
- * @route POST /post/delete
+ * @route GET /post/delete
  */
 export const deletePost = async (req: Request, res: Response): Promise<void> => {
   try {
