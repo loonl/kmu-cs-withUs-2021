@@ -116,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/user_infochange_changeok_margintop"
-            android:backgroundTint="@color/indigo"
+            android:backgroundTint="@color/main"
             android:text="@string/user_info_change_done" />
 
     </LinearLayout>
