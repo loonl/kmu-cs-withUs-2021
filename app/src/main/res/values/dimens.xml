@@ -180,6 +180,11 @@
     <dimen name="postdetail_commentreply_layout_padding">16dp</dimen>
     <dimen name="postdetail_commentreply_symbol_textsize">25sp</dimen>
     <dimen name="postdetail_commentreply_marginleft">10dp</dimen>
+    <dimen name="postdetail_commentreply_delete_paddingleft">3dp</dimen>
+
+    <dimen name="postdetail_comment_delete_paddingleft">3dp</dimen>
+    <dimen name="postdetail_comment_reply_paddingleft">3dp</dimen>
+
 
 
     <!-- ************************* Comment Reply ************************* -->

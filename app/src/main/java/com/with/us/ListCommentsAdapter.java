@@ -14,9 +14,96 @@ import java.util.ArrayList;
 public class ListCommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<ListComments> mDataList = null;
+    private OnItemClickListener mListener = null; // 리스너 객체 참조 변수
 
+    // 리스너 객체 참조를 어댑터에 전달 메서드
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener;
+    }
+
+    // 댓글 UI 뷰홀더
+    public class CommentViewHolder extends RecyclerView.ViewHolder {
+        TextView content, userid, time, tv_delete, tv_reply;
+
+        CommentViewHolder(View itemView) {
+            super(itemView);
+
+            // click 이벤트 만들어줄 textView 연결
+            tv_delete = (TextView) itemView.findViewById(R.id.text_comment_delete);
+            tv_reply = (TextView) itemView.findViewById(R.id.text_comment_reply);
+
+            content = itemView.findViewById(R.id.text_comment_content);
+            userid = itemView.findViewById(R.id.text_comment_userid);
+            time = itemView.findViewById(R.id.text_comment_time);
+
+            // "삭제" 텍스트 클릭 이벤트
+            tv_delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        if (mListener != null)
+                            mListener.onCommentDeleteClick(view, position);
+                    }
+                }
+            }); // end tv_delete setOnClickListener
+
+            // "답글" 텍스트 클릭 이벤트
+            tv_reply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        if (mListener != null) {
+                            mListener.onCommentReplyClick(view, position);
+                        }
+                    } // end if
+                }
+            }); // end tv_reply setOnClickListener
+        } // end commentViewHolder
+    }
+
+    // 답글 UI 뷰홀더
+    public class ReplyViewHolder extends RecyclerView.ViewHolder {
+        TextView content, userid, time, tv_replydelete;
+
+        ReplyViewHolder(View itemView) {
+            super(itemView);
+
+            // click 이벤트 만들어줄 textView 연결
+            tv_replydelete = (TextView) itemView.findViewById(R.id.text_commentreply_delete);
+
+            content = itemView.findViewById(R.id.text_commentreply_content);
+            userid = itemView.findViewById(R.id.text_commentreply_userid);
+            time = itemView.findViewById(R.id.text_commentreply_time);
+
+            // "삭제" 텍스트 클릭 이벤트
+            tv_replydelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        if (mListener != null) {
+                            mListener.onCommentReplyDeleteClick(view, position);
+                        }
+                    } // end if
+                }
+            }); // end tv_replydelete setOnClickListener
+        }
+    } // end ReplyViewHolder
+
+    // 생성자
     ListCommentsAdapter(ArrayList<ListComments> dataList) {
         mDataList = dataList;
+    }
+
+    // 아이템 클릭 리스너 인터페이스
+    interface OnItemClickListener {
+        void onCommentDeleteClick(View v, int position);
+
+        void onCommentReplyClick(View v, int position);
+
+        void onCommentReplyDeleteClick(View v, int position);
     }
 
     @NonNull
@@ -39,13 +126,15 @@ public class ListCommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (viewHolder instanceof CommentViewHolder) {
-            ((CommentViewHolder) viewHolder).content.setText(mDataList.get(position).getContent());
-            ((CommentViewHolder) viewHolder).time.setText(mDataList.get(position).getTime());
-            ((CommentViewHolder) viewHolder).userid.setText(mDataList.get(position).getUserId());
+            CommentViewHolder commentViewHolder = (CommentViewHolder) viewHolder;
+            commentViewHolder.content.setText(mDataList.get(position).getContent());
+            commentViewHolder.time.setText(mDataList.get(position).getTime());
+            commentViewHolder.userid.setText(mDataList.get(position).getUserId());
         } else { // viewHolder instanceof ReplyViewHolder
-            ((ReplyViewHolder) viewHolder).content.setText(mDataList.get(position).getContent());
-            ((ReplyViewHolder) viewHolder).time.setText(mDataList.get(position).getTime());
-            ((ReplyViewHolder) viewHolder).userid.setText(mDataList.get(position).getUserId());
+            ReplyViewHolder replyViewHolder = (ReplyViewHolder) viewHolder;
+            replyViewHolder.content.setText(mDataList.get(position).getContent());
+            replyViewHolder.time.setText(mDataList.get(position).getTime());
+            replyViewHolder.userid.setText(mDataList.get(position).getUserId());
         }
     }
 
@@ -57,29 +146,5 @@ public class ListCommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
         return mDataList.get(position).getViewType();
-    }
-
-    public class CommentViewHolder extends RecyclerView.ViewHolder {
-        TextView content, userid, time;
-
-        CommentViewHolder(View itemView) {
-            super(itemView);
-
-            content = itemView.findViewById(R.id.text_comment_content);
-            userid = itemView.findViewById(R.id.text_comment_userid);
-            time = itemView.findViewById(R.id.text_comment_time);
-        }
-    }
-
-    public class ReplyViewHolder extends RecyclerView.ViewHolder {
-        TextView content, userid, time;
-
-        ReplyViewHolder(View itemView) {
-            super(itemView);
-
-            content = itemView.findViewById(R.id.text_commentreply_content);
-            userid = itemView.findViewById(R.id.text_commentreply_userid);
-            time = itemView.findViewById(R.id.text_commentreply_time);
-        }
     }
 }
