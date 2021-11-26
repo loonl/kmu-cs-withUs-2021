@@ -8,6 +8,15 @@ import { admin, db } from "../config/firebase"
  */
 export const getUser = async (req: Request, res: Response): Promise<void> => {
   try {
+    if (res.locals.isAnonymous) {
+      res.json({
+        displayName: "익명",
+        birthDate: 0,
+        gender: "",
+        interest: "",
+        region: "",
+      })
+    }
     const userData = (await (db.collection("User").doc(res.locals.uid).get())).data()
     if (userData != null) {
       console.log(userData)
@@ -25,6 +34,7 @@ export const getUser = async (req: Request, res: Response): Promise<void> => {
 /**
  * Create a new user
  * @route POST /user/create
+ * @param displayName
  */
 export const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -55,6 +65,15 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
  */
 export const modifyUser = async (req: Request, res: Response): Promise<void> => {
   try {
+    if (res.locals.isAnonymous) {
+      res.json({
+        displayName: "익명",
+        birthDate: 0,
+        gender: "",
+        interest: "",
+        region: "",
+      })
+    }
     const { displayName, birthDate, region, interest } = req.body
 
     if (!displayName && !birthDate && !region && !interest) {
@@ -82,9 +101,6 @@ export const modifyUser = async (req: Request, res: Response): Promise<void> => 
  */
 export const deleteUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    if (res.locals.uid == null) {
-      res.send({ "success": false })
-    }
     const userData = await db.collection("User").doc(res.locals.uid).get()
     if (userData.exists) {
       await admin.auth().deleteUser(res.locals.uid)

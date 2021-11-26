@@ -12,15 +12,22 @@ import com.google.firebase.auth.GetTokenResult;
 public class FirebaseHelper {
 
     private static final String TAG = "FirebaseHelper";
-    public static FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+    public static String getUserEmail() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            return user.getEmail();
+        }
+        return "Anonymous";
+    }
 
     public static void setAccessToken(Context context) {
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             user.getIdToken(true).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
                 @Override
                 public void onSuccess(GetTokenResult result) {
-                    String PREF_ID_TOKEN = result.getToken();
+                    String PREF_ID_TOKEN = result.getToken() != null ? result.getToken() : "None";
                     Log.d(TAG, PREF_ID_TOKEN);
                     SharedPreferences preferences = context.getSharedPreferences(user.getEmail(), 0);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -32,8 +39,12 @@ public class FirebaseHelper {
     }
 
     public static String getAccessToken(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(user.getEmail(), 0);
-        return preferences.getString("token", "");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            SharedPreferences preferences = context.getSharedPreferences(user.getEmail(), 0);
+            return preferences.getString("token", "");
+        }
+        return "Anonymous";
     }
 
 }

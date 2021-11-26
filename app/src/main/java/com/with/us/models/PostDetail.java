@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class PostDetail implements Parcelable {
+    public String uid;
     public String author;
     public String category;
     public String displayName;
@@ -16,8 +17,9 @@ public class PostDetail implements Parcelable {
     public int likes;
     public String postImage;
 
-    public PostDetail(String author, String category, String displayName, String title, String content, int comments,
+    public PostDetail(String uid, String author, String category, String displayName, String title, String content, int comments,
             int likes, String postImage) {
+        this.uid = uid;
         this.author = author;
         this.category = category;
         this.displayName = displayName;
@@ -29,6 +31,7 @@ public class PostDetail implements Parcelable {
     }
 
     protected PostDetail(Parcel in) {
+        uid = in.readString();
         author = in.readString();
         category = in.readString();
         displayName = in.readString();

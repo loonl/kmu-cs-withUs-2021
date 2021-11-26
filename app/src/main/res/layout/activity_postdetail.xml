@@ -56,7 +56,22 @@
                 android:id="@+id/activity_postdetail_layout_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/activity_postdetail_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/activity_postdetail_tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:text="@string/postdetail_content" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,12 +80,12 @@
                 android:text="@string/postdetail_comment_title"
                 android:textColor="@color/black" />
 
-            <LinearLayout
-                android:id="@+id/activity_postdetail_layout_comment"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_postdetail_rv_comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/postdetail_commentlayout_padding" />
+                android:background="@color/brightgray" />
+
         </LinearLayout>
     </ScrollView>
 

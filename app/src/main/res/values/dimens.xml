@@ -19,6 +19,7 @@
     <dimen name="category_child_padding">3dp</dimen>
     <dimen name="category_child_textsize">20sp</dimen>
 
+
     <!-- ************************* Login ************************* -->
     <dimen name="login_appname_margintop">80dp</dimen>
     <dimen name="login_appname_textsize">40sp</dimen>
@@ -53,6 +54,7 @@
     <dimen name="register_pw_minheight">48dp</dimen>
     <dimen name="register_continue_margintop">10dp</dimen>
     <dimen name="register_continue_minheight">48dp</dimen>
+
 
     <!-- ************************* Register Fragment ************************* -->
     <dimen name="fg_register_layout_margintop">250dp</dimen>
@@ -91,6 +93,7 @@
     <dimen name="user_infochange_interest_margintop">10dp</dimen>
     <dimen name="user_infochange_interest_minheight">48dp</dimen>
     <dimen name="user_infochange_changeok_margintop">30dp</dimen>
+
 
     <!-- ************************* User Info ************************* -->
     <dimen name="user_info_mypage_width">330dp</dimen>
@@ -173,6 +176,15 @@
     <dimen name="postdetail_commentlayout_padding">8dp</dimen>
     <dimen name="postdetail_commentinput_padding">8dp</dimen>
     <dimen name="postdetail_commentok_textsize">13sp</dimen>
+    <dimen name="postdetail_commentreply_layout_margin">16dp</dimen>
+    <dimen name="postdetail_commentreply_layout_padding">16dp</dimen>
+    <dimen name="postdetail_commentreply_symbol_textsize">25sp</dimen>
+    <dimen name="postdetail_commentreply_marginleft">10dp</dimen>
+    <dimen name="postdetail_commentreply_delete_paddingleft">3dp</dimen>
+
+    <dimen name="postdetail_comment_delete_paddingleft">3dp</dimen>
+    <dimen name="postdetail_comment_reply_paddingleft">3dp</dimen>
+
 
 
     <!-- ************************* Comment Reply ************************* -->

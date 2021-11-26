@@ -75,7 +75,8 @@ public class PostFormActivity extends AppCompatActivity {
                         ref.putFile(uri).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                                double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
+                                double progress = (100.0 * snapshot.getBytesTransferred())
+                                        / snapshot.getTotalByteCount();
                                 ProgressBar progressBar = findViewById(R.id.progressbar);
                                 progressBar.setVisibility(View.VISIBLE);
                                 progressBar.setProgress((int) progress);
@@ -120,15 +121,15 @@ public class PostFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 RequestHelper.getPostAPI()
-                        .createPostDetail("Bearer " + FirebaseHelper.getAccessToken(PostFormActivity.this),
-                                new PostDetail(user.getUid(), category, displayName,
+                        .createPost("Bearer " + FirebaseHelper.getAccessToken(PostFormActivity.this),
+                                new PostDetail("", user.getUid(), category, displayName,
                                         activity_post_form_title.getText().toString(),
-                                        activity_post_form_content.getText().toString(), 0, 0, imageUri.toString()))
+                                        activity_post_form_content.getText().toString(), 0, 0,
+                                        imageUri.toString() != null ? imageUri.toString() : "None"))
                         .enqueue(new Callback<List<PostDetail>>() {
                             @Override
                             public void onResponse(Call<List<PostDetail>> call, Response<List<PostDetail>> response) {
                                 if (response.isSuccessful()) {
-
                                 }
                             }
 

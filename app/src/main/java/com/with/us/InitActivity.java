@@ -5,12 +5,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.with.us.utils.ServiceHandler;
+
 public class InitActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init);
+        startService(new Intent(this, ServiceHandler.class));
 
         Thread thread = new Thread() {
             @Override

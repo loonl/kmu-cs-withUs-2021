@@ -18,6 +18,10 @@ public class ClubListItemAdapter extends BaseAdapter {
     ArrayList<ClubListItem> items = new ArrayList<>();
     Context context;
 
+    public String getUid(int position) {
+        return items.get(position).getUid();
+    }
+
     @Override
     public int getCount() {
         return items.size();

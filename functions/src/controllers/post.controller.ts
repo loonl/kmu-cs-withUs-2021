@@ -9,7 +9,6 @@ import { db } from "../config/firebase"
 export const getPost = async (req: Request, res: Response): Promise<void> => {
   try {
     const { category } = req.query
-    console.log(category)
     const snapshot = await db
       .collection("Post")
       .where("category", "==", category)
@@ -27,19 +26,46 @@ export const getPost = async (req: Request, res: Response): Promise<void> => {
 }
 
 
+interface Payload {
+  postUid: string
+}
+
+/**
+ * Get post detail data
+ * @route GET /post/detail
+ */
+export const getPostDetail = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const param: Payload = Object(req.query)
+    const { postUid } = param
+
+    if (!postUid) {
+      const postData = (await db.collection("Post").doc(postUid).get()).data()
+      console.log(postData)
+      res.json(postData)
+    }
+  } catch (error) {
+    console.log("Error on getting post", error)
+  }
+}
+
+
 /**
  * Create a new post
  * @route POST /post/create
  */
 export const createPost = async (req: Request, res: Response): Promise<void> => {
   try {
+    if (res.locals.isAnonymous) {
+      res.send({ success: false })
+    }
     const { author, category, displayName, title, content, postImage } = req.body
     if (!author && !category && !displayName && !title && !content) {
       console.log("No payload from user")
       res.send({ "success": false }) // FIXME: throw empty payload error
     }
 
-    await db.collection("Post").add({
+    const ref = await db.collection("Post").add({
       author: author,
       category: category,
       displayName: displayName,
@@ -48,6 +74,9 @@ export const createPost = async (req: Request, res: Response): Promise<void> => 
       likes: 0,
       comments: 0,
       postImage: postImage,
+    })
+    await db.collection("Post").doc(ref.id).update({
+      uid: ref.id,
     })
     res.send({ success: true })
   } catch (error) {
