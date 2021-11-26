@@ -1,6 +1,6 @@
 <resources>
     <!-- ************************* App ************************* -->
-    <dimen name="app_name_size">40sp</dimen>
+    <dimen name="app_name_size">50sp</dimen>
 
 
     <!-- ************************* App Bar ************************* -->

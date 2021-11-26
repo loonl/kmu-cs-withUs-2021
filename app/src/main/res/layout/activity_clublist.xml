@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/clublist_writepost_margin"
-            android:backgroundTint="@color/mediumseagreen"
+            android:backgroundTint="@color/main"
             android:elevation="@dimen/clublist_writepost_elevation"
             android:src="@drawable/pencil" />
     </FrameLayout>
