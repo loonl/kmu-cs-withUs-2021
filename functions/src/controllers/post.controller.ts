@@ -34,17 +34,20 @@ export const getLatestPost = async (req: Request, res: Response): Promise<void> 
   try {
     const milliSeconds = admin.firestore.Timestamp.now().toMillis()
     const date = new Date(milliSeconds - (24 * 60 * 60 * 1000))
+    console.log("요청 들어옴")
+    try {
+      const snapshot = await db
+        .collection("Post")
+        .where("timestamp", ">", date)
+        .get()
 
-    const snapshot = await db
-      .collection("Post")
-      .orderBy("timestamp", "asc")
-      .where("timestamp", "<", date)
-      .get()
-
-    snapshot.docs.map((doc) => {
-      console.log(doc.data())
-      res.send(doc.data())
-    })
+      snapshot.docs.map((doc) => {
+        console.log(doc.data())
+        res.send(doc.data())
+      })
+    } catch (error) {
+      res.send({ "success": false })
+    }
   } catch (error) {
     console.log("Error on getting a post:", error)
   }

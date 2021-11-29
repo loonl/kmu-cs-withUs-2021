@@ -33,7 +33,7 @@ export const createComment = async (req: Request, res: Response): Promise<void> 
     if (res.locals.isAnonymous) {
       res.send({ success: false })
     }
-    let { author, category, displayName, content, isComment, likes, bundleId, postUid, profileImage } = req.body
+    let { author, category, displayName, content, isComment, bundleId, postUid, profileImage } = req.body
     if (!author && !category && !displayName && !content && !postUid && !profileImage) {
       console.log("No payload from user")
       res.send({ "success": false }) // FIXME: throw empty payload error

@@ -83,66 +83,66 @@ public class PostDetailActivity extends AppCompatActivity {
         comments = new ArrayList<ListComments>();
         adapter_comments = new ListCommentsAdapter(comments);
 
-//        // recyclerView 속 텍스트 클릭 이벤트 구현
-//        adapter_comments.setOnItemClickListener(new ListCommentsAdapter.OnItemClickListener() {
-//
-//            @Override
-//            public void onCommentDeleteClick(View v, int position) {
-//                // 마지막 index 값 삭제할 때 아래 코드로 가면 에러 발생
-//                if (position == comments.size() - 1) {
-//                    comments.remove(position);
-//                    Toast.makeText(getApplicationContext(), "댓글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
-//                    adapter_comments.notifyDataSetChanged();
-//                    return;
-//                }
-//                // 답글이 아래 달려있는 댓글이면 다르게 설정
-//                if (comments.get(position + 1).getViewType() == ListCommentsViewType.REPLY) {
-//                    comments.remove(position);
-//                    comments.add(position, new ListComments("삭제된 댓글입니다.", "", "",
-//                            ListCommentsViewType.COMMENT));
-//                    adapter_comments.notifyItemChanged(position); // 삭제 버튼이 바로 안사라지는 버그
-//                } else {
-//                    comments.remove(position);
-//                }
-//                Toast.makeText(getApplicationContext(), "댓글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
-//                adapter_comments.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCommentReplyClick(View v, int position) {
-//                String text = ((TextView) v).getText().toString();
-//                Intent intent = new Intent(getApplicationContext(),
-//                        CommentReplyActivity.class);
-//                intent.putExtra("userid", comments.get(position).getUserId());
-//                intent.putExtra("content", comments.get(position).getContent());
-//                intent.putExtra("time", comments.get(position).getTime());
-//                intent.putExtra("index", position);
-//                resultLauncher.launch(intent);
-//            }
-//
-//            @Override
-//            public void onCommentReplyDeleteClick(View v, int position) {
-//
-//                // 맨 마지막 index의 단 하나뿐인 답글인 경우 밑으로 가면 에러 발생
-//                if (position == comments.size() - 1) {
-//                    comments.remove(position);
-//                    comments.remove(position - 1);
-//                    Toast.makeText(getApplicationContext(), "답글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
-//                    adapter_comments.notifyDataSetChanged();
-//                    return;
-//                }
-//
-//                // 삭제된 댓글의 단 하나인 답글이었을 때
-//                if (comments.get(position - 1).getContent().equals("삭제된 댓글입니다.") &&
-//                        (comments.get(position + 1).getViewType() == ListCommentsViewType.COMMENT)) {
-//                    comments.remove(position);
-//                    comments.remove(position - 1);
-//                } else
-//                    comments.remove(position);
-//                Toast.makeText(getApplicationContext(), "답글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
-//                adapter_comments.notifyDataSetChanged();
-//            }
-//        });
+        // recyclerView 속 텍스트 클릭 이벤트 구현
+        adapter_comments.setOnItemClickListener(new ListCommentsAdapter.OnItemClickListener() {
+
+            @Override
+            public void onCommentDeleteClick(View v, int position) {
+                // 마지막 index 값 삭제할 때 아래 코드로 가면 에러 발생
+                if (position == comments.size() - 1) {
+                    comments.remove(position);
+                    Toast.makeText(getApplicationContext(), "댓글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                    adapter_comments.notifyDataSetChanged();
+                    return;
+                }
+                // 답글이 아래 달려있는 댓글이면 다르게 설정
+                if (comments.get(position + 1).getViewType() == ListCommentsViewType.REPLY) {
+                    comments.remove(position);
+                    comments.add(position, new ListComments("삭제된 댓글입니다.", "", "",
+                            ListCommentsViewType.COMMENT));
+                    adapter_comments.notifyItemChanged(position); // 삭제 버튼이 바로 안사라지는 버그
+                } else {
+                    comments.remove(position);
+                }
+                Toast.makeText(getApplicationContext(), "댓글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                adapter_comments.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCommentReplyClick(View v, int position) {
+                String text = ((TextView) v).getText().toString();
+                Intent intent = new Intent(getApplicationContext(),
+                        CommentReplyActivity.class);
+                intent.putExtra("userid", comments.get(position).getUserId());
+                intent.putExtra("content", comments.get(position).getContent());
+                intent.putExtra("time", comments.get(position).getTime());
+                intent.putExtra("index", position);
+                resultLauncher.launch(intent);
+            }
+
+            @Override
+            public void onCommentReplyDeleteClick(View v, int position) {
+
+                // 맨 마지막 index의 단 하나뿐인 답글인 경우 밑으로 가면 에러 발생
+                if (position == comments.size() - 1) {
+                    comments.remove(position);
+                    comments.remove(position - 1);
+                    Toast.makeText(getApplicationContext(), "답글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                    adapter_comments.notifyDataSetChanged();
+                    return;
+                }
+
+                // 삭제된 댓글의 단 하나인 답글이었을 때
+                if (comments.get(position - 1).getContent().equals("삭제된 댓글입니다.") &&
+                        (comments.get(position + 1).getViewType() == ListCommentsViewType.COMMENT)) {
+                    comments.remove(position);
+                    comments.remove(position - 1);
+                } else
+                    comments.remove(position);
+                Toast.makeText(getApplicationContext(), "답글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                adapter_comments.notifyDataSetChanged();
+            }
+        });
 
         // recyclerView와 Adapter 연결
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -158,10 +158,10 @@ public class PostDetailActivity extends AppCompatActivity {
                 String text = activity_postdetail_et_comment.getText().toString();
 
 
-//                // array에 넣어주고 데이터 새로고침
-//                comments.add(new ListComments(text, "test_nickname", "2021.11.23 23:43",
-//                        ListCommentsViewType.COMMENT));
-//                adapter_comments.notifyDataSetChanged();
+                // array에 넣어주고 데이터 새로고침
+                comments.add(new ListComments(text, "test_nickname", "2021.11.23 23:43",
+                        ListCommentsViewType.COMMENT));
+                adapter_comments.notifyDataSetChanged();
 
 
                 // 키보드 없애고, getText 지워주기
@@ -170,44 +170,44 @@ public class PostDetailActivity extends AppCompatActivity {
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         });
-//
-//        // 답글화면에서 넘어왔을 때 처리하는 resultLauncher 부분
-//        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-//        new ActivityResultCallback<ActivityResult>() {
-//            @Override
-//            public void onActivityResult(ActivityResult result) {
-//                if (result.getResultCode() == RESULT_OK) {
-//                    Intent intent = result.getData();
-//                    String userid = intent.getStringExtra("userid");
-//                    String time = intent.getStringExtra("time");
-//                    String content = intent.getStringExtra("content");
-//                    int index = intent.getIntExtra("index", 0);
-//
-//                    // 마지막 index 댓글의 답글이면 아래 코드에서 에러가 발생
-//                    if (index == comments.size()) {
-//                        comments.add(index, new ListComments(content, userid, time,
-//                                ListCommentsViewType.REPLY));
-//                        adapter_comments.notifyDataSetChanged();
-//                        return;
-//                    }
-//
-//                    // 답글이 여러개면 가장 밑에 달려야하기 때문에 달아야 할 index 추적
-//                    while (true) {
-//                        if (index == comments.size())
-//                            break;
-//                        if (comments.get(index).getViewType() == ListCommentsViewType.COMMENT)
-//                            break;
-//                        index++;
-//                    }
-//
-//                    // array 에 답글 넣어주고 새로고침
-//                    comments.add(index, new ListComments(content, userid, time,
-//                            ListCommentsViewType.REPLY));
-//                    adapter_comments.notifyDataSetChanged();
-//                }
-//            } // end on ActivityResult
-//        }); // end ResultLauncher
-//
+
+        // 답글화면에서 넘어왔을 때 처리하는 resultLauncher 부분
+        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+        new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == RESULT_OK) {
+                    Intent intent = result.getData();
+                    String userid = intent.getStringExtra("userid");
+                    String time = intent.getStringExtra("time");
+                    String content = intent.getStringExtra("content");
+                    int index = intent.getIntExtra("index", 0);
+
+                    // 마지막 index 댓글의 답글이면 아래 코드에서 에러가 발생
+                    if (index == comments.size()) {
+                        comments.add(index, new ListComments(content, userid, time,
+                                ListCommentsViewType.REPLY));
+                        adapter_comments.notifyDataSetChanged();
+                        return;
+                    }
+
+                    // 답글이 여러개면 가장 밑에 달려야하기 때문에 달아야 할 index 추적
+                    while (true) {
+                        if (index == comments.size())
+                            break;
+                        if (comments.get(index).getViewType() == ListCommentsViewType.COMMENT)
+                            break;
+                        index++;
+                    }
+
+                    // array 에 답글 넣어주고 새로고침
+                    comments.add(index, new ListComments(content, userid, time,
+                            ListCommentsViewType.REPLY));
+                    adapter_comments.notifyDataSetChanged();
+                }
+            } // end on ActivityResult
+        }); // end ResultLauncher
+
 //        // TODO: 로그인된 유저가 쓴 댓글 및 답글에만 "삭제" TEXTVIEW가 나타날 수 있게 구현하면 좋을 듯합니다?
 
     }

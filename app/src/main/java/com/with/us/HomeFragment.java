@@ -46,39 +46,39 @@ public class HomeFragment extends Fragment {
         lv_hot = view.findViewById(R.id.lv_hot);
         lv_new = view.findViewById(R.id.lv_new);
 
-////        makeList(lv_hot, hotList);
-//        makeList(lv_new, newList);
+        ////        makeList(lv_hot, hotList);
+        //        makeList(lv_new, newList);
 
         return view;
     }
 
-//    private void makeList(ListView listView, ArrayList<PostDetail> arrayList, PostDetail postDetail) {
-//        List<PostDetail> list = new ArrayList<>();
-//        ArrayAdapter<PostDetail> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
-//        listView.setAdapter(adapter);
-//        list.addAll(arrayList);
-//    }
-//
-//    private void getLatestPost() {
-//        RequestHelper.getPostAPI().getLatestPost("Bearer " + FirebaseHelper.getAccessToken(getContext()))
-//                .enqueue(new Callback<List<PostDetail>>() {
-//                    @Override
-//                    public void onResponse(Call<List<PostDetail>> call, Response<List<PostDetail>> response) {
-//                        if (response.isSuccessful()) {
-//                            List<PostDetail> posts = response.body();
-//                            for (PostDetail post : posts) {
-//
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<List<PostDetail>> call, Throwable t) {
-//                        Log.e(TAG, t.getMessage());
-//                        // TODO: "게시글이 존재하지 않습니다"로 텍스트 보여주기
-//                    }
-//                });
-//    }
+    //    private void makeList(ListView listView, ArrayList<PostDetail> arrayList, PostDetail postDetail) {
+    //        List<PostDetail> list = new ArrayList<>();
+    //        ArrayAdapter<PostDetail> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
+    //        listView.setAdapter(adapter);
+    //        list.addAll(arrayList);
+    //    }
+    //
+    //    private void getLatestPost() {
+    //        RequestHelper.getPostAPI().getLatestPost("Bearer " + FirebaseHelper.getAccessToken(getContext()))
+    //                .enqueue(new Callback<List<PostDetail>>() {
+    //                    @Override
+    //                    public void onResponse(Call<List<PostDetail>> call, Response<List<PostDetail>> response) {
+    //                        if (response.isSuccessful()) {
+    //                            List<PostDetail> posts = response.body();
+    //                            for (PostDetail post : posts) {
+    //
+    //                            }
+    //                        }
+    //                    }
+    //
+    //                    @Override
+    //                    public void onFailure(Call<List<PostDetail>> call, Throwable t) {
+    //                        Log.e(TAG, t.getMessage());
+    //                        // TODO: "게시글이 존재하지 않습니다"로 텍스트 보여주기
+    //                    }
+    //                });
+    //    }
 
     @Override
     public void onDestroyView() {
