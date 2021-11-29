@@ -31,7 +31,11 @@ import com.with.us.models.PostDetail;
 import com.with.us.services.auxiliary.RequestHelper;
 import com.with.us.utils.FirebaseHelper;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -153,6 +157,7 @@ public class PostDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String text = activity_postdetail_et_comment.getText().toString();
 
+
 //                // array에 넣어주고 데이터 새로고침
 //                comments.add(new ListComments(text, "test_nickname", "2021.11.23 23:43",
 //                        ListCommentsViewType.COMMENT));
@@ -215,12 +220,14 @@ public class PostDetailActivity extends AppCompatActivity {
                     activity_postdetail_tv_title.setText(response.body().title);
                     activity_postdetail_tv_userid.setText(response.body().displayName);
                     activity_postdetail_tv_content.setText(response.body().content);
+                    DateFormat dateFormat = new SimpleDateFormat("MM-dd");
+                    String createdAt = dateFormat.format(new Date(Long.parseLong(response.body().createdAt)));
+
+                    activity_postdetail_tv_date.setText(createdAt);
                     if (!response.body().postImage.equals("None")) {
                         activity_postdetail_iv.setVisibility(View.VISIBLE);
                         Glide.with(PostDetailActivity.this).load(response.body().postImage).centerCrop().placeholder(R.drawable.no_image).into(activity_postdetail_iv);
                     }
-//                    // TODO: 서버에 날짜 추가해야 됨
-//                     activity_postdetail_tv_date.setText(response.body().createdAt[0]);
                 }
             }
 

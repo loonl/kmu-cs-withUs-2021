@@ -6,6 +6,8 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
+import com.google.firebase.Timestamp;
 
 public class PostDetail implements Parcelable {
     public String uid;
@@ -17,9 +19,10 @@ public class PostDetail implements Parcelable {
     public int comments;
     public int likes;
     public String postImage;
+    public String createdAt;
 
     public PostDetail(String uid, String author, String category, String displayName, String title, String content, int comments,
-            int likes, String postImage) {
+            int likes, String postImage, String createdAt) {
         this.uid = uid;
         this.author = author;
         this.category = category;
@@ -29,6 +32,7 @@ public class PostDetail implements Parcelable {
         this.comments = comments;
         this.likes = likes;
         this.postImage = postImage;
+        this.createdAt = createdAt;
     }
 
     protected PostDetail(Parcel in) {
@@ -41,6 +45,7 @@ public class PostDetail implements Parcelable {
         comments = in.readInt();
         likes = in.readInt();
         postImage = in.readString();
+        createdAt = in.readString();
     }
 
     public static final Creator<PostDetail> CREATOR = new Creator<PostDetail>() {

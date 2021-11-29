@@ -21,6 +21,7 @@ import com.with.us.services.auxiliary.RequestHelper;
 import com.with.us.utils.FirebaseHelper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -92,6 +93,8 @@ public class ClubListActivity extends AppCompatActivity {
     }
 
     private void getPost(ListView listView, ClubListItemAdapter adapter) {
+        Date time = new Date();
+        String createdAt = String.valueOf(time.getTime());
         RequestHelper.getPostAPI()
                 .getPost("Bearer " + FirebaseHelper.getAccessToken(ClubListActivity.this), CATEGORY)
                 .enqueue(new Callback<List<PostDetail>>() {
@@ -101,7 +104,7 @@ public class ClubListActivity extends AppCompatActivity {
                             List<PostDetail> posts = response.body();
                             for (PostDetail post : posts) {
                                 adapter.addItem(new ClubListItem(post.uid, post.title, post.content, post.likes, post.comments,
-                                        post.postImage));
+                                        post.postImage, createdAt));
                             }
                             listView.setAdapter(adapter);
                         }

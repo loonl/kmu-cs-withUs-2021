@@ -33,27 +33,30 @@ export const createComment = async (req: Request, res: Response): Promise<void> 
     if (res.locals.isAnonymous) {
       res.send({ success: false })
     }
-    const { author, category, displayName, title, content, postUid, profileImage } = req.body
-    if (!author && !category && !displayName && !title && !content && !postUid && !profileImage) {
+    let { author, category, displayName, content, isComment, likes, bundleId, postUid, profileImage } = req.body
+    if (!author && !category && !displayName && !content && !postUid && !profileImage) {
       console.log("No payload from user")
       res.send({ "success": false }) // FIXME: throw empty payload error
     }
 
     const time = new Date()
-    const bundleId = time.getTime()
+    const createdAt = time.getTime()
+    if (isComment) {
+      bundleId = createdAt
+    }
 
     const ref = await db.collection("Comment").add({
       author: author,
       category: category,
       displayName: displayName,
-      title: title,
       content: content,
       likes: 0,
-      comments: 0,
+      isComment: isComment,
       postUid: postUid,
       profileImage: profileImage,
       bundleId: bundleId,
-      createdAt: time,
+      createdAt: createdAt,
+      notification: true,
     })
     await db.collection("Comment").doc(ref.id).update({
       uid: ref.id,

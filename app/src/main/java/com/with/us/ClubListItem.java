@@ -7,6 +7,7 @@ public class ClubListItem {
     private int likes;
     private int comments;
     private String postImage;
+    private String createdAt;
 
     public String getUid() {
         return uid;
@@ -32,12 +33,17 @@ public class ClubListItem {
         return postImage;
     }
 
-    public ClubListItem(String uid, String title, String content, int likes, int comments, String postImage) {
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public ClubListItem(String uid, String title, String content, int likes, int comments, String postImage, String createdAt) {
         this.uid = uid;
         this.title = title;
         this.content = content;
         this.likes = likes;
         this.comments = comments;
         this.postImage = postImage;
+        this.createdAt = createdAt;
     }
 }

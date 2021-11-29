@@ -15,6 +15,9 @@ public interface PostService {
     @GET("post/get")
     Call<List<PostDetail>> getPost(@Header("Authorization") String auth, @Query("category") String category);
 
+    @GET("post/latest")
+    Call<List<PostDetail>> getLatestPost(@Header("Authorization") String auth);
+
     @GET("post/detail")
     Call<PostDetail> getPostDetail(@Header("Authorization") String auth, @Query("postUid") String postUid);
 

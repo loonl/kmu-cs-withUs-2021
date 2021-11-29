@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { db } from "../config/firebase"
+import { db, admin } from "../config/firebase"
 
 
 /**
@@ -22,6 +22,31 @@ export const getPost = async (req: Request, res: Response): Promise<void> => {
     res.send(result)
   } catch (error) {
     console.log("Error on getting posts:", error)
+  }
+}
+
+
+/**
+ * Get post data
+ * @route GET /post/get
+ */
+export const getLatestPost = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const milliSeconds = admin.firestore.Timestamp.now().toMillis()
+    const date = new Date(milliSeconds - (24 * 60 * 60 * 1000))
+
+    const snapshot = await db
+      .collection("Post")
+      .orderBy("timestamp", "asc")
+      .where("timestamp", "<", date)
+      .get()
+
+    snapshot.docs.map((doc) => {
+      console.log(doc.data())
+      res.send(doc.data())
+    })
+  } catch (error) {
+    console.log("Error on getting a post:", error)
   }
 }
 
@@ -62,6 +87,9 @@ export const createPost = async (req: Request, res: Response): Promise<void> => 
       res.send({ "success": false }) // FIXME: throw empty payload error
     }
 
+    const time = new Date()
+    const milliSeconds = time.getTime()
+
     const ref = await db.collection("Post").add({
       author: author,
       category: category,
@@ -71,7 +99,8 @@ export const createPost = async (req: Request, res: Response): Promise<void> => 
       likes: 0,
       comments: 0,
       postImage: postImage,
-      createdAt: new Date,
+      createdAt: milliSeconds,
+      timestamp: new Date,
     })
     await db.collection("Post").doc(ref.id).update({
       uid: ref.id,

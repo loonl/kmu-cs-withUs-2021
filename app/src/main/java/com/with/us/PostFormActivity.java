@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.Timestamp;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -32,6 +33,7 @@ import com.with.us.models.UserInfo;
 import com.with.us.services.auxiliary.RequestHelper;
 import com.with.us.utils.FirebaseHelper;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,6 +49,7 @@ public class PostFormActivity extends AppCompatActivity {
     String displayName, category;
     FirebaseUser user;
     Uri imageUri;
+    Timestamp timestamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,12 +123,16 @@ public class PostFormActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
+                Date date = new Date();
+                String createdAt = String.valueOf(date.getTime());
+
                 RequestHelper.getPostAPI()
                         .createPost("Bearer " + FirebaseHelper.getAccessToken(PostFormActivity.this),
                                 new PostDetail("", user.getUid(), category, displayName,
                                         activity_post_form_title.getText().toString(),
                                         activity_post_form_content.getText().toString(), 0, 0,
-                                        imageUri.toString() != null ? imageUri.toString() : "None"))
+                                        imageUri.toString() != null ? imageUri.toString() : "None", createdAt))
                         .enqueue(new Callback<List<PostDetail>>() {
                             @Override
                             public void onResponse(Call<List<PostDetail>> call, Response<List<PostDetail>> response) {
